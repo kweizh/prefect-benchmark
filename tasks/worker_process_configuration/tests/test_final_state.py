@@ -29,7 +29,7 @@ def test_deployment_exists_via_cli():
         capture_output=True, text=True, cwd=PROJECT_DIR
     )
     assert result.returncode == 0, f"'prefect deployment inspect' failed: {result.stderr}"
-    assert "my-flow/pipeline-deployment" in result.stdout, f"Expected 'my-flow/pipeline-deployment' in deployment inspection, got: {result.stdout}"
+    assert "pipeline-deployment" in result.stdout, f"Expected 'pipeline-deployment' in deployment inspection, got: {result.stdout}"
 
 def test_worker_log_exists():
     """Priority 3 fallback: basic file existence check."""

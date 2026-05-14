@@ -6,7 +6,7 @@ RUN apt-get update -y && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-RUN pip3 install --break-system-packages prefect prefect-docker --ignore-installed pluggy
+RUN pip3 install --break-system-packages prefect prefect-docker pluggy
 
 RUN mkdir -p /home/user && chmod 0755 /home/user
 

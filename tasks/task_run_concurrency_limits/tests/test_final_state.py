@@ -15,7 +15,7 @@ def test_concurrency_limit_set_via_cli():
     )
     assert result.returncode == 0, \
         f"'prefect concurrency-limit inspect' failed: {result.stderr}"
-    
+
     # Check if limit is 2. The output might be text or JSON depending on the CLI version.
     # We can check if '2' is in the output and 'heavy-processing' is in the output.
     assert "2" in result.stdout and "heavy-processing" in result.stdout, \
@@ -25,9 +25,9 @@ def test_flow_py_updated_with_tag():
     """Priority 3 fallback: basic file check to see if the tag was added."""
     flow_path = os.path.join(PROJECT_DIR, "flow.py")
     assert os.path.isfile(flow_path), f"File {flow_path} missing."
-    
+
     with open(flow_path) as f:
         content = f.read()
-    
+
     assert "tags=[\"heavy-processing\"]" in content or "tags=['heavy-processing']" in content, \
         "Expected process_data task to have tags=['heavy-processing'] in flow.py."
