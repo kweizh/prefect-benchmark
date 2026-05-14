@@ -1,0 +1,255 @@
+downloading uv 0.9.7 x86_64-unknown-linux-gnu
+no checksums to verify
+installing to /root/.local/bin
+  uv
+  uvx
+everything's installed!
+
+To add $HOME/.local/bin to your PATH, either restart your shell or run:
+
+    source $HOME/.local/bin/env (sh, bash, zsh)
+    source $HOME/.local/bin/env.fish (fish)
+Downloading pydantic-core (2.0MiB)
+Downloading cryptography (4.5MiB)
+Downloading sqlalchemy (3.2MiB)
+Downloading beartype (1.3MiB)
+Downloading asyncpg (3.4MiB)
+Downloading prefect (14.0MiB)
+Downloading pygments (1.2MiB)
+Downloading burner-redis (1.3MiB)
+Downloading apprise (1.6MiB)
+ Downloading pygments
+ Downloading beartype
+ Downloading burner-redis
+ Downloading apprise
+ Downloading pydantic-core
+ Downloading asyncpg
+ Downloading sqlalchemy
+ Downloading cryptography
+ Downloading prefect
+Installed 112 packages in 465ms
+============================= test session starts ==============================
+platform linux -- Python 3.12.3, pytest-8.4.1, pluggy-1.6.0
+rootdir: /tests
+plugins: anyio-4.13.0, json-ctrf-0.3.5
+collected 1 item
+
+tests/test_final_state.py F                                              [100%]
+
+=================================== FAILURES ===================================
+________________________ test_pausing_and_resuming_flow ________________________
+
+    def test_pausing_and_resuming_flow():
+        # Start the flow
+        process = subprocess.Popen(
+            ["python3", "flow.py"],
+            cwd=PROJECT_DIR,
+            stdout=open(LOG_FILE, "w"),
+            stderr=subprocess.STDOUT,
+            preexec_fn=os.setsid
+        )
+    
+        try:
+            # Wait for the flow to reach Paused state
+            paused_run = None
+            for _ in range(15):
+                try:
+                    paused_run = asyncio.run(get_paused_flow_run())
+                    if paused_run:
+                        break
+                except Exception:
+                    pass
+                time.sleep(1)
+    
+            assert paused_run is not None, "Flow run did not reach Paused state within 15 seconds."
+    
+            # Verify Task 1 output
+            with open(LOG_FILE, "r") as f:
+                content = f.read()
+    
+>           assert "Task 1 complete" in content, f"Expected 'Task 1 complete' in output.log, got: {content}"
+E           AssertionError: Expected 'Task 1 complete' in output.log, got: 12:27:29.140 | INFO    | prefect - Starting temporary server on http://127.0.0.1:8014
+E             See https://docs.prefect.io/v3/concepts/server#how-to-guides for more information on running a dedicated Prefect server.
+E             12:27:39.612 | ERROR   | uvicorn.error - Traceback (most recent call last):
+E               File "/root/.cache/uv/archive-v0/a3QR6e5yLrMKkttHzGO49/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+E                 self.dialect.do_execute(
+E               File "/root/.cache/uv/archive-v0/a3QR6e5yLrMKkttHzGO49/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+E                 cursor.execute(statement, parameters)
+E               File "/root/.cache/uv/archive-v0/a3QR6e5yLrMKkttHzGO49/lib/python3.12/site-packages/sqlalchemy/dialects/sqlite/aiosqlite.py", line 182, in execute
+E                 self._adapt_connection._handle_exception(error)
+E               File "/root/.cache/uv/archive-v0/a3QR6e5yLrMKkttHzGO49/lib/python3.12/site-packages/sqlalchemy/dialects/sqlite/aiosqlite.py", line 342, in _handle_exception
+E                 raise error
+E               File "/root/.cache/uv/archive-v0/a3QR6e5yLrMKkttHzGO49/lib/python3.12/site-packages/sqlalchemy/dialects/sqlite/aiosqlite.py", line 164, in execute
+E                 self.await_(_cursor.execute(operation, parameters))
+E               File "/root/.cache/uv/archive-v0/a3QR6e5yLrMKkttHzGO49/lib/python3.12/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 132, in await_only
+E                 return current.parent.switch(awaitable)  # type: ignore[no-any-return,attr-defined] # noqa: E501
+E                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E               File "/root/.cache/uv/archive-v0/a3QR6e5yLrMKkttHzGO49/lib/python3.12/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 196, in greenlet_spawn
+E                 value = await result
+E                         ^^^^^^^^^^^^
+E               File "/root/.cache/uv/archive-v0/a3QR6e5yLrMKkttHzGO49/lib/python3.12/site-packages/aiosqlite/cursor.py", line 40, in execute
+E                 await self._execute(self._cursor.execute, sql, parameters)
+E               File "/root/.cache/uv/archive-v0/a3QR6e5yLrMKkttHzGO49/lib/python3.12/site-packages/aiosqlite/cursor.py", line 32, in _execute
+E                 return await self._conn._execute(fn, *args, **kwargs)
+E                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E               File "/root/.cache/uv/archive-v0/a3QR6e5yLrMKkttHzGO49/lib/python3.12/site-packages/aiosqlite/core.py", line 160, in _execute
+E                 return await future
+E                        ^^^^^^^^^^^^
+E               File "/root/.cache/uv/archive-v0/a3QR6e5yLrMKkttHzGO49/lib/python3.12/site-packages/aiosqlite/core.py", line 63, in _connection_worker_thread
+E                 result = function()
+E                          ^^^^^^^^^^
+E             sqlite3.OperationalError: duplicate column name: block_type_name
+E             
+E             The above exception was the direct cause of the following exception:
+E             
+E             Traceback (most recent call last):
+E               File "/root/.cache/uv/archive-v0/a3QR6e5yLrMKkttHzGO49/lib/python3.12/site-packages/starlette/routing.py", line 638, in lifespan
+E                 async with self.lifespan_context(app) as maybe_state:
+E               File "/usr/lib/python3.12/contextlib.py", line 210, in __aenter__
+E                 return await anext(self.gen)
+E                        ^^^^^^^^^^^^^^^^^^^^^
+E               File "/root/.cache/uv/archive-v0/a3QR6e5yLrMKkttHzGO49/lib/python3.12/site-packages/prefect/server/api/server.py", line 921, in lifespan
+E                 await run_migrations()
+E               File "/root/.cache/uv/archive-v0/a3QR6e5yLrMKkttHzGO49/lib/python3.12/site-packages/prefect/server/api/server.py", line 898, in run_migrations
+E                 await db.create_db()
+E               File "/root/.cache/uv/archive-v0/a3QR6e5yLrMKkttHzGO49/lib/python3.12/site-packages/prefect/server/database/interface.py", line 77, in create_db
+E                 await self.run_migrations_upgrade()
+E               File "/root/.cache/uv/archive-v0/a3QR6e5yLrMKkttHzGO49/lib/python3.12/site-packages/prefect/server/database/interface.py", line 115, in run_migrations_upgrade
+E                 await run_sync_in_worker_thread(alembic_upgrade)
+E               File "/root/.cache/uv/archive-v0/a3QR6e5yLrMKkttHzGO49/lib/python3.12/site-packages/prefect/utilities/asyncutils/__init__.py", line 233, in run_sync_in_worker_thread
+E                 result = await anyio.to_thread.run_sync(
+E                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E               File "/root/.cache/uv/archive-v0/a3QR6e5yLrMKkttHzGO49/lib/python3.12/site-packages/anyio/to_thread.py", line 63, in run_sync
+E                 return await get_async_backend().run_sync_in_worker_thread(
+E                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E               File "/root/.cache/uv/archive-v0/a3QR6e5yLrMKkttHzGO49/lib/python3.12/site-packages/anyio/_backends/_asyncio.py", line 2518, in run_sync_in_worker_thread
+E                 return await future
+E                        ^^^^^^^^^^^^
+E               File "/root/.cache/uv/archive-v0/a3QR6e5yLrMKkttHzGO49/lib/python3.12/site-packages/anyio/_backends/_asyncio.py", line 1002, in run
+E                 result = context.run(func, *args)
+E                          ^^^^^^^^^^^^^^^^^^^^^^^^
+E               File "/root/.cache/uv/archive-v0/a3QR6e5yLrMKkttHzGO49/lib/python3.12/site-packages/prefect/utilities/asyncutils/__init__.py", line 243, in call_with_mark
+E                 return call()
+E                        ^^^^^^
+E               File "/root/.cache/uv/archive-v0/a3QR6e5yLrMKkttHzGO49/lib/python3.12/site-packages/prefect/server/database/alembic_commands.py", line 36, in wrapper
+E                 return fn(*args, **kwargs)
+E                        ^^^^^^^^^^^^^^^^^^^
+E               File "/root/.cache/uv/archive-v0/a3QR6e5yLrMKkttHzGO49/lib/python3.12/site-packages/prefect/server/database/alembic_commands.py", line 72, in alembic_upgrade
+E                 alembic.command.upgrade(alembic_config(), revision, sql=dry_run)
+E               File "/root/.cache/uv/archive-v0/a3QR6e5yLrMKkttHzGO49/lib/python3.12/site-packages/alembic/command.py", line 483, in upgrade
+E                 script.run_env()
+E               File "/root/.cache/uv/archive-v0/a3QR6e5yLrMKkttHzGO49/lib/python3.12/site-packages/alembic/script/base.py", line 545, in run_env
+E                 util.load_python_file(self.dir, "env.py")
+E               File "/root/.cache/uv/archive-v0/a3QR6e5yLrMKkttHzGO49/lib/python3.12/site-packages/alembic/util/pyfiles.py", line 116, in load_python_file
+E                 module = load_module_py(module_id, path)
+E                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E               File "/root/.cache/uv/archive-v0/a3QR6e5yLrMKkttHzGO49/lib/python3.12/site-packages/alembic/util/pyfiles.py", line 136, in load_module_py
+E                 spec.loader.exec_module(module)  # type: ignore
+E                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E               File "<frozen importlib._bootstrap_external>", line 995, in exec_module
+E               File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+E               File "/root/.cache/uv/archive-v0/a3QR6e5yLrMKkttHzGO49/lib/python3.12/site-packages/prefect/server/database/_migrations/env.py", line 201, in <module>
+E                 run_async_from_worker_thread(apply_migrations)
+E               File "/root/.cache/uv/archive-v0/a3QR6e5yLrMKkttHzGO49/lib/python3.12/site-packages/prefect/utilities/asyncutils/__init__.py", line 254, in run_async_from_worker_thread
+E                 return anyio.from_thread.run(call)
+E                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E               File "/root/.cache/uv/archive-v0/a3QR6e5yLrMKkttHzGO49/lib/python3.12/site-packages/anyio/from_thread.py", line 90, in run
+E                 return token.backend_class.run_async_from_thread(
+E                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E               File "/root/.cache/uv/archive-v0/a3QR6e5yLrMKkttHzGO49/lib/python3.12/site-packages/anyio/_backends/_asyncio.py", line 2565, in run_async_from_thread
+E                 return f.result()
+E                        ^^^^^^^^^^
+E               File "/usr/lib/python3.12/concurrent/futures/_base.py", line 456, in result
+E                 return self.__get_result()
+E                        ^^^^^^^^^^^^^^^^^^^
+E               File "/usr/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+E                 raise self._exception
+E               File "/root/.cache/uv/archive-v0/a3QR6e5yLrMKkttHzGO49/lib/python3.12/site-packages/anyio/_backends/_asyncio.py", line 2546, in task_wrapper
+E                 return await func(*args)
+E                        ^^^^^^^^^^^^^^^^^
+E               File "/root/.cache/uv/archive-v0/a3QR6e5yLrMKkttHzGO49/lib/python3.12/site-packages/prefect/server/database/_migrations/env.py", line 190, in apply_migrations
+E                 await connection.run_sync(do_run_migrations)
+E               File "/root/.cache/uv/archive-v0/a3QR6e5yLrMKkttHzGO49/lib/python3.12/site-packages/sqlalchemy/ext/asyncio/engine.py", line 888, in run_sync
+E                 return await greenlet_spawn(
+E                        ^^^^^^^^^^^^^^^^^^^^^
+E               File "/root/.cache/uv/archive-v0/a3QR6e5yLrMKkttHzGO49/lib/python3.12/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 203, in greenlet_spawn
+E                 result = context.switch(value)
+E                          ^^^^^^^^^^^^^^^^^^^^^
+E               File "/root/.cache/uv/archive-v0/a3QR6e5yLrMKkttHzGO49/lib/python3.12/site-packages/prefect/server/database/_migrations/env.py", line 159, in do_run_migrations
+E                 context.run_migrations()
+E               File "<string>", line 8, in run_migrations
+E               File "/root/.cache/uv/archive-v0/a3QR6e5yLrMKkttHzGO49/lib/python3.12/site-packages/alembic/runtime/environment.py", line 969, in run_migrations
+E                 self.get_context().run_migrations(**kw)
+E               File "/root/.cache/uv/archive-v0/a3QR6e5yLrMKkttHzGO49/lib/python3.12/site-packages/alembic/runtime/migration.py", line 626, in run_migrations
+E                 step.migration_fn(**kw)
+E               File "/root/.cache/uv/archive-v0/a3QR6e5yLrMKkttHzGO49/lib/python3.12/site-packages/prefect/server/database/_migrations/versions/sqlite/2023_10_30_075026_cef24af2ec34_add_block_type_name_to_block_document.py", line 20, in upgrade
+E                 with op.batch_alter_table("block_document", schema=None) as batch_op:
+E               File "/usr/lib/python3.12/contextlib.py", line 144, in __exit__
+E                 next(self.gen)
+E               File "/root/.cache/uv/archive-v0/a3QR6e5yLrMKkttHzGO49/lib/python3.12/site-packages/alembic/operations/base.py", line 408, in batch_alter_table
+E                 impl.flush()
+E               File "/root/.cache/uv/archive-v0/a3QR6e5yLrMKkttHzGO49/lib/python3.12/site-packages/alembic/operations/batch.py", line 115, in flush
+E                 fn(*arg, **kw)
+E               File "/root/.cache/uv/archive-v0/a3QR6e5yLrMKkttHzGO49/lib/python3.12/site-packages/alembic/ddl/impl.py", line 392, in add_column
+E                 self._exec(
+E               File "/root/.cache/uv/archive-v0/a3QR6e5yLrMKkttHzGO49/lib/python3.12/site-packages/alembic/ddl/impl.py", line 256, in _exec
+E                 return conn.execute(construct, params)
+E                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E               File "/root/.cache/uv/archive-v0/a3QR6e5yLrMKkttHzGO49/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1419, in execute
+E                 return meth(
+E                        ^^^^^
+E               File "/root/.cache/uv/archive-v0/a3QR6e5yLrMKkttHzGO49/lib/python3.12/site-packages/sqlalchemy/sql/ddl.py", line 187, in _execute_on_connection
+E                 return connection._execute_ddl(
+E                        ^^^^^^^^^^^^^^^^^^^^^^^^
+E               File "/root/.cache/uv/archive-v0/a3QR6e5yLrMKkttHzGO49/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1530, in _execute_ddl
+E                 ret = self._execute_context(
+E                       ^^^^^^^^^^^^^^^^^^^^^^
+E               File "/root/.cache/uv/archive-v0/a3QR6e5yLrMKkttHzGO49/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+E                 return self._exec_single_context(
+E                        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+E               File "/root/.cache/uv/archive-v0/a3QR6e5yLrMKkttHzGO49/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+E                 self._handle_dbapi_exception(
+E               File "/root/.cache/uv/archive-v0/a3QR6e5yLrMKkttHzGO49/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2363, in _handle_dbapi_exception
+E                 raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+E               File "/root/.cache/uv/archive-v0/a3QR6e5yLrMKkttHzGO49/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+E                 self.dialect.do_execute(
+E               File "/root/.cache/uv/archive-v0/a3QR6e5yLrMKkttHzGO49/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 952, in do_execute
+E                 cursor.execute(statement, parameters)
+E               File "/root/.cache/uv/archive-v0/a3QR6e5yLrMKkttHzGO49/lib/python3.12/site-packages/sqlalchemy/dialects/sqlite/aiosqlite.py", line 182, in execute
+E                 self._adapt_connection._handle_exception(error)
+E               File "/root/.cache/uv/archive-v0/a3QR6e5yLrMKkttHzGO49/lib/python3.12/site-packages/sqlalchemy/dialects/sqlite/aiosqlite.py", line 342, in _handle_exception
+E                 raise error
+E               File "/root/.cache/uv/archive-v0/a3QR6e5yLrMKkttHzGO49/lib/python3.12/site-packages/sqlalchemy/dialects/sqlite/aiosqlite.py", line 164, in execute
+E                 self.await_(_cursor.execute(operation, parameters))
+E               File "/root/.cache/uv/archive-v0/a3QR6e5yLrMKkttHzGO49/lib/python3.12/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 132, in await_only
+E                 return current.parent.switch(awaitable)  # type: ignore[no-any-return,attr-defined] # noqa: E501
+E                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E               File "/root/.cache/uv/archive-v0/a3QR6e5yLrMKkttHzGO49/lib/python3.12/site-packages/sqlalchemy/util/_concurrency_py3k.py", line 196, in greenlet_spawn
+E                 value = await result
+E                         ^^^^^^^^^^^^
+E               File "/root/.cache/uv/archive-v0/a3QR6e5yLrMKkttHzGO49/lib/python3.12/site-packages/aiosqlite/cursor.py", line 40, in execute
+E                 await self._execute(self._cursor.execute, sql, parameters)
+E               File "/root/.cache/uv/archive-v0/a3QR6e5yLrMKkttHzGO49/lib/python3.12/site-packages/aiosqlite/cursor.py", line 32, in _execute
+E                 return await self._conn._execute(fn, *args, **kwargs)
+E                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E               File "/root/.cache/uv/archive-v0/a3QR6e5yLrMKkttHzGO49/lib/python3.12/site-packages/aiosqlite/core.py", line 160, in _execute
+E                 return await future
+E                        ^^^^^^^^^^^^
+E               File "/root/.cache/uv/archive-v0/a3QR6e5yLrMKkttHzGO49/lib/python3.12/site-packages/aiosqlite/core.py", line 63, in _connection_worker_thread
+E                 result = function()
+E                          ^^^^^^^^^^
+E             sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) duplicate column name: block_type_name
+E             [SQL: ALTER TABLE block_document ADD COLUMN block_type_name VARCHAR]
+E             (Background on this error at: https://sqlalche.me/e/20/e3q8)
+E             
+E             12:27:39.635 | ERROR   | uvicorn.error - Application startup failed. Exiting.
+E             12:27:44.850 | INFO    | Flow run 'rustling-potoo' - Beginning flow run 'rustling-potoo' for flow 'my_pausing_flow'
+E             12:27:44.884 | INFO    | Task run 'task_one-354' - Finished in state Completed()
+E             12:27:44.885 | INFO    | Flow run 'rustling-potoo' - Pausing flow, execution will continue when this flow run is resumed.
+E             
+E           assert 'Task 1 complete' in "12:27:29.140 | INFO    | prefect - Starting temporary server on http://127.0.0.1:8014\nSee https://docs.prefect.io/v3...:44.885 | INFO    | Flow run 'rustling-potoo' - Pausing flow, execution will continue when this flow run is resumed.\n"
+
+tests/test_final_state.py:58: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_final_state.py::test_pausing_and_resuming_flow - AssertionE...
+============================== 1 failed in 23.59s ==============================

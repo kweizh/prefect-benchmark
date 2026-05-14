@@ -1,0 +1,1957 @@
+Running command: apt-get update && apt-get install -y curl ripgrep
+Running command: apt-get update && apt-get install -y curl ripgrep
+Running command: apt-get update && apt-get install -y curl ripgrep
+Running command: apt-get update && apt-get install -y curl ripgrep
+Command outputs captured
+Running command: set -euo pipefail; curl -fsSL https://getpochi.com/install.sh | bash  && mkdir -p /logs/agent/pochi && ~/.pochi/bin/pochi --version
+Command outputs captured
+Running command: set -euo pipefail; curl -fsSL https://getpochi.com/install.sh | bash  && mkdir -p /logs/agent/pochi && ~/.pochi/bin/pochi --version
+Command outputs captured
+Running command: set -euo pipefail; curl -fsSL https://getpochi.com/install.sh | bash  && mkdir -p /logs/agent/pochi && ~/.pochi/bin/pochi --version
+Command outputs captured
+Running command: set -euo pipefail; curl -fsSL https://getpochi.com/install.sh | bash  && mkdir -p /logs/agent/pochi && ~/.pochi/bin/pochi --version
+Command outputs captured
+Running command: ln -sf ~/.pochi/bin/pochi /usr/local/bin/pochi
+Command outputs captured
+Command outputs captured
+Running command: ln -sf ~/.pochi/bin/pochi /usr/local/bin/pochi
+Running command: echo artifact_creation_markdown__GeynQLR > /logs/artifacts/trial_id
+Command outputs captured
+Command outputs captured
+Running command: mkdir -p ~/.pochi && cat << 'EOF' | sed -e "s/OPENAI_API_KEY/${OPENAI_API_KEY}/g" -e "s/DEEPINFRA_API_KEY/${DEEPINFRA_API_KEY}/g" -e "s/ANTHROPIC_API_KEY/${ANTHROPIC_API_KEY}/g" > ~/.pochi/config.jsonc
+{
+  "providers": {
+    "deepinfra": {
+      "kind": "openai",
+      "baseURL": "https://api.deepinfra.com/v1/openai",
+      "apiKey": "DEEPINFRA_API_KEY",
+      "models": {
+        "zai-org/GLM-4.7-Flash": {
+          "name": "glm-4.7-flash"
+        },
+        "moonshotai/Kimi-K2.6": {
+          "name": "kimi-K2.6"
+        },
+        "deepseek-ai/DeepSeek-V4-Pro": {
+          "name": "DeepSeek-V4-Pro"
+        }
+      }
+    },
+    "anthropic": {
+      "kind": "openai",
+      "baseURL": "https://api.anthropic.com/v1",
+      "apiKey": "ANTHROPIC_API_KEY",
+      "models": {
+        "claude-opus-4-6": {
+          "name": "claude-opus-4-6"
+        }
+      }
+    },
+    "openai": {
+      "kind": "openai",
+      "baseURL": "https://api.openai.com/v1",
+      "apiKey": "OPENAI_API_KEY",
+      "models": {
+        "gpt-5.4": {
+          "name": "gpt-5.4"
+        }
+      }
+    }
+  }
+}
+EOF
+Command outputs captured
+Running command: mkdir -p /logs/artifacts
+Command outputs captured
+Running command: export PATH="$HOME/.pochi/bin:$PATH"; pochi --model zai/glm-4.7 --max-steps 200 --max-retries 10 --blobs-dir /logs/agent/pochi/blobs --experimental-stream-trajectory /logs/agent/pochi/trajectory.jsonl > >(tee /logs/agent/pochi/stdout.txt) 2> >(tee /logs/agent/pochi/stderr.txt >&2) <<'EOF'
+# Create a Markdown Artifact using Prefect
+
+## Background
+Prefect provides an `Artifacts` API to publish data and visual reports directly to the Prefect backend. You have a pre-written Python script that defines a Prefect flow to generate a markdown report.
+
+## Requirements
+- Run the provided Python script `flow.py` to execute the flow and create a markdown artifact in the Prefect backend.
+- Redirect the output of the script to a log file.
+
+## Implementation Guide
+1. Navigate to the project directory.
+2. Execute the script `flow.py` using Python and redirect both stdout and stderr to `output.log`.
+
+## Constraints
+- Project path: /home/user/project
+- Log file: /home/user/project/output.log
+
+EOF
+Running command: echo cancelling_flow_runs__CZjfXd7 > /logs/artifacts/trial_id
+Command outputs captured
+Running command: mkdir -p ~/.pochi && cat << 'EOF' | sed -e "s/OPENAI_API_KEY/${OPENAI_API_KEY}/g" -e "s/DEEPINFRA_API_KEY/${DEEPINFRA_API_KEY}/g" -e "s/ANTHROPIC_API_KEY/${ANTHROPIC_API_KEY}/g" > ~/.pochi/config.jsonc
+{
+  "providers": {
+    "deepinfra": {
+      "kind": "openai",
+      "baseURL": "https://api.deepinfra.com/v1/openai",
+      "apiKey": "DEEPINFRA_API_KEY",
+      "models": {
+        "zai-org/GLM-4.7-Flash": {
+          "name": "glm-4.7-flash"
+        },
+        "moonshotai/Kimi-K2.6": {
+          "name": "kimi-K2.6"
+        },
+        "deepseek-ai/DeepSeek-V4-Pro": {
+          "name": "DeepSeek-V4-Pro"
+        }
+      }
+    },
+    "anthropic": {
+      "kind": "openai",
+      "baseURL": "https://api.anthropic.com/v1",
+      "apiKey": "ANTHROPIC_API_KEY",
+      "models": {
+        "claude-opus-4-6": {
+          "name": "claude-opus-4-6"
+        }
+      }
+    },
+    "openai": {
+      "kind": "openai",
+      "baseURL": "https://api.openai.com/v1",
+      "apiKey": "OPENAI_API_KEY",
+      "models": {
+        "gpt-5.4": {
+          "name": "gpt-5.4"
+        }
+      }
+    }
+  }
+}
+EOF
+Command outputs captured
+Running command: mkdir -p /logs/artifacts
+Command outputs captured
+Running command: export PATH="$HOME/.pochi/bin:$PATH"; pochi --model zai/glm-4.7 --max-steps 200 --max-retries 10 --blobs-dir /logs/agent/pochi/blobs --experimental-stream-trajectory /logs/agent/pochi/trajectory.jsonl > >(tee /logs/agent/pochi/stdout.txt) 2> >(tee /logs/agent/pochi/stderr.txt >&2) <<'EOF'
+# Cancelling Prefect Flow Runs
+
+## Background
+Prefect flow runs can be monitored and managed using the Prefect CLI. Sometimes a flow run might take too long or get stuck in an infinite loop, and you need to cancel it manually without stopping the entire worker or server.
+
+## Requirements
+- Start the provided flow script `/home/user/project/flow.py` in the background.
+- Find the running flow run for the `infinite_loop_flow` flow.
+- Cancel the flow run using the Prefect CLI.
+
+## Constraints
+- Project path: `/home/user/project`
+- The flow must be cancelled via the Prefect CLI, not by killing the python process directly.
+EOF
+Command outputs captured
+Running command: ln -sf ~/.pochi/bin/pochi /usr/local/bin/pochi
+Command outputs captured
+Command outputs captured
+Running command: ln -sf ~/.pochi/bin/pochi /usr/local/bin/pochi
+Command outputs captured
+Running command: echo custom_block_type_creation__mKJ3Le3 > /logs/artifacts/trial_id
+Command outputs captured
+Running command: mkdir -p ~/.pochi && cat << 'EOF' | sed -e "s/OPENAI_API_KEY/${OPENAI_API_KEY}/g" -e "s/DEEPINFRA_API_KEY/${DEEPINFRA_API_KEY}/g" -e "s/ANTHROPIC_API_KEY/${ANTHROPIC_API_KEY}/g" > ~/.pochi/config.jsonc
+{
+  "providers": {
+    "deepinfra": {
+      "kind": "openai",
+      "baseURL": "https://api.deepinfra.com/v1/openai",
+      "apiKey": "DEEPINFRA_API_KEY",
+      "models": {
+        "zai-org/GLM-4.7-Flash": {
+          "name": "glm-4.7-flash"
+        },
+        "moonshotai/Kimi-K2.6": {
+          "name": "kimi-K2.6"
+        },
+        "deepseek-ai/DeepSeek-V4-Pro": {
+          "name": "DeepSeek-V4-Pro"
+        }
+      }
+    },
+    "anthropic": {
+      "kind": "openai",
+      "baseURL": "https://api.anthropic.com/v1",
+      "apiKey": "ANTHROPIC_API_KEY",
+      "models": {
+        "claude-opus-4-6": {
+          "name": "claude-opus-4-6"
+        }
+      }
+    },
+    "openai": {
+      "kind": "openai",
+      "baseURL": "https://api.openai.com/v1",
+      "apiKey": "OPENAI_API_KEY",
+      "models": {
+        "gpt-5.4": {
+          "name": "gpt-5.4"
+        }
+      }
+    }
+  }
+}
+EOF
+Command outputs captured
+Running command: mkdir -p /logs/artifacts
+Running command: echo automations_flow_run_state__LCfPro3 > /logs/artifacts/trial_id
+Command outputs captured
+Running command: export PATH="$HOME/.pochi/bin:$PATH"; pochi --model zai/glm-4.7 --max-steps 200 --max-retries 10 --blobs-dir /logs/agent/pochi/blobs --experimental-stream-trajectory /logs/agent/pochi/trajectory.jsonl > >(tee /logs/agent/pochi/stdout.txt) 2> >(tee /logs/agent/pochi/stderr.txt >&2) <<'EOF'
+# Custom Prefect Block Type
+
+## Background
+Prefect Blocks are a primitive for configuring external systems and managing secrets. You can define custom block types by subclassing the `Block` base class.
+
+## Requirements
+- Create a Python file `/home/user/myproject/custom_block.py`.
+- Define a custom Prefect Block named `DatabaseConfig` that inherits from `prefect.blocks.core.Block`.
+- The block should have three fields: `host` (string), `port` (integer, default 5432), and `password` (string using `pydantic.SecretStr`).
+- In the same script or a separate script `/home/user/myproject/setup_block.py`, register the block type to the local Prefect instance, and save an instance of it named `my-db-config` with host `localhost`, port `5432`, and password `supersecret`.
+- Write a script `/home/user/myproject/load_block.py` that loads the `my-db-config` block and prints its host to standard output.
+
+## Constraints
+- Project path: /home/user/myproject
+- Log file: /home/user/myproject/output.log
+- Start command: `python setup_block.py` (or execute the file where you do the setup)
+- Ensure Prefect is installed and configured to use a local SQLite database (default behavior).
+
+## Integrations
+- None
+EOF
+Command outputs captured
+Running command: mkdir -p ~/.pochi && cat << 'EOF' | sed -e "s/OPENAI_API_KEY/${OPENAI_API_KEY}/g" -e "s/DEEPINFRA_API_KEY/${DEEPINFRA_API_KEY}/g" -e "s/ANTHROPIC_API_KEY/${ANTHROPIC_API_KEY}/g" > ~/.pochi/config.jsonc
+{
+  "providers": {
+    "deepinfra": {
+      "kind": "openai",
+      "baseURL": "https://api.deepinfra.com/v1/openai",
+      "apiKey": "DEEPINFRA_API_KEY",
+      "models": {
+        "zai-org/GLM-4.7-Flash": {
+          "name": "glm-4.7-flash"
+        },
+        "moonshotai/Kimi-K2.6": {
+          "name": "kimi-K2.6"
+        },
+        "deepseek-ai/DeepSeek-V4-Pro": {
+          "name": "DeepSeek-V4-Pro"
+        }
+      }
+    },
+    "anthropic": {
+      "kind": "openai",
+      "baseURL": "https://api.anthropic.com/v1",
+      "apiKey": "ANTHROPIC_API_KEY",
+      "models": {
+        "claude-opus-4-6": {
+          "name": "claude-opus-4-6"
+        }
+      }
+    },
+    "openai": {
+      "kind": "openai",
+      "baseURL": "https://api.openai.com/v1",
+      "apiKey": "OPENAI_API_KEY",
+      "models": {
+        "gpt-5.4": {
+          "name": "gpt-5.4"
+        }
+      }
+    }
+  }
+}
+EOF
+Command outputs captured
+Running command: mkdir -p /logs/artifacts
+Command outputs captured
+Running command: export PATH="$HOME/.pochi/bin:$PATH"; pochi --model zai/glm-4.7 --max-steps 200 --max-retries 10 --blobs-dir /logs/agent/pochi/blobs --experimental-stream-trajectory /logs/agent/pochi/trajectory.jsonl > >(tee /logs/agent/pochi/stdout.txt) 2> >(tee /logs/agent/pochi/stderr.txt >&2) <<'EOF'
+# Prefect Flow Run State Automations
+
+## Background
+Prefect allows you to execute specific actions automatically when a flow run changes state (e.g., completes or fails). You can attach state change hooks directly to flows to perform side effects like logging, sending notifications, or cleaning up resources.
+
+## Requirements
+- Create a Python script `flow_hooks.py` in the project directory.
+- Define a success hook `on_success_hook` that writes the exact text `Success!` to `/home/user/myproject/success.log`.
+- Define a failure hook `on_failure_hook` that writes the exact text `Failed!` to `/home/user/myproject/failure.log`.
+- Create a Prefect flow named `successful_flow` that attaches the `on_success_hook` to the `on_completion` event. This flow should execute without errors.
+- Create a Prefect flow named `failing_flow` that attaches the `on_failure_hook` to the `on_failure` event. This flow must raise a `ValueError` exception.
+- The script must run both flows sequentially. The `failing_flow` should handle the exception or let it propagate, as long as the hook is triggered.
+
+## Implementation Guide
+1. Ensure you are in `/home/user/myproject`.
+2. Create the `flow_hooks.py` file.
+3. Import `flow` from `prefect`.
+4. Define the hooks. The hook functions must accept three arguments: `flow`, `flow_run`, and `state`.
+5. Define the flows with the `@flow` decorator, passing the hooks as lists to `on_completion` and `on_failure` respectively.
+6. Add a standard `if __name__ == '__main__':` block to run `successful_flow()` and then `failing_flow()` (you can use a `try...except` block to catch the `ValueError` so the script finishes cleanly).
+7. Run the script with `python flow_hooks.py`.
+
+## Constraints
+- Project path: `/home/user/myproject`
+- Log files: `/home/user/myproject/success.log` and `/home/user/myproject/failure.log`
+- The Prefect local server does not strictly need to be running in the background for local hooks to fire, but you may start it if you prefer.
+
+## Integrations
+- None
+EOF
+Command outputs captured
+Running command: rm -f ~/.pochi/config.jsonc
+Command outputs captured
+The verifier.env contains an API key (often the case for LLM-based verifiers). You will incur costs associated with the API calls.
+Command outputs captured
+Running command: rm -f ~/.pochi/config.jsonc
+Command outputs captured
+The verifier.env contains an API key (often the case for LLM-based verifiers). You will incur costs associated with the API calls.
+Running command: apt-get update && apt-get install -y curl ripgrep
+Command outputs captured
+Running command: set -euo pipefail; curl -fsSL https://getpochi.com/install.sh | bash  && mkdir -p /logs/agent/pochi && ~/.pochi/bin/pochi --version
+Command outputs captured
+Running command: ln -sf ~/.pochi/bin/pochi /usr/local/bin/pochi
+Command outputs captured
+Running command: echo event_webhook_trigger_automation__Jo3AhJj > /logs/artifacts/trial_id
+Command outputs captured
+Running command: mkdir -p ~/.pochi && cat << 'EOF' | sed -e "s/OPENAI_API_KEY/${OPENAI_API_KEY}/g" -e "s/DEEPINFRA_API_KEY/${DEEPINFRA_API_KEY}/g" -e "s/ANTHROPIC_API_KEY/${ANTHROPIC_API_KEY}/g" > ~/.pochi/config.jsonc
+{
+  "providers": {
+    "deepinfra": {
+      "kind": "openai",
+      "baseURL": "https://api.deepinfra.com/v1/openai",
+      "apiKey": "DEEPINFRA_API_KEY",
+      "models": {
+        "zai-org/GLM-4.7-Flash": {
+          "name": "glm-4.7-flash"
+        },
+        "moonshotai/Kimi-K2.6": {
+          "name": "kimi-K2.6"
+        },
+        "deepseek-ai/DeepSeek-V4-Pro": {
+          "name": "DeepSeek-V4-Pro"
+        }
+      }
+    },
+    "anthropic": {
+      "kind": "openai",
+      "baseURL": "https://api.anthropic.com/v1",
+      "apiKey": "ANTHROPIC_API_KEY",
+      "models": {
+        "claude-opus-4-6": {
+          "name": "claude-opus-4-6"
+        }
+      }
+    },
+    "openai": {
+      "kind": "openai",
+      "baseURL": "https://api.openai.com/v1",
+      "apiKey": "OPENAI_API_KEY",
+      "models": {
+        "gpt-5.4": {
+          "name": "gpt-5.4"
+        }
+      }
+    }
+  }
+}
+EOF
+Command outputs captured
+Running command: mkdir -p /logs/artifacts
+Command outputs captured
+Running command: export PATH="$HOME/.pochi/bin:$PATH"; pochi --model zai/glm-4.7 --max-steps 200 --max-retries 10 --blobs-dir /logs/agent/pochi/blobs --experimental-stream-trajectory /logs/agent/pochi/trajectory.jsonl > >(tee /logs/agent/pochi/stdout.txt) 2> >(tee /logs/agent/pochi/stderr.txt >&2) <<'EOF'
+# Prefect Event-Driven Automation
+
+## Background
+Prefect 3.0 supports event-driven automations. You can configure a deployment to trigger a flow run when a specific external event occurs, such as a file upload or a webhook payload.
+
+## Requirements
+- Create a Prefect flow named `webhook-flow` in `/home/user/project/flow.py` that accepts an optional `payload` parameter (defaulting to an empty dict) and prints `"Received event payload"`.
+- Use `flow.serve()` to serve this flow as a deployment named `event-deployment`.
+- The deployment must be configured with an event trigger that listens for the event `custom.webhook.received`.
+- The trigger must require the event to have the resource ID `prefect.resource.id=my.webhook.resource`.
+- Ensure the server is running on `127.0.0.1:4200` and the deployment is actively polling.
+
+## Implementation Guide
+1. Ensure the Prefect server is running locally on port 4200.
+2. In `/home/user/project/flow.py`, define the flow and use `from prefect.events import DeploymentEventTrigger` to configure the `triggers` parameter of `flow.serve()`.
+3. Serve the flow in a background process or another terminal session so it can listen for events.
+
+## Constraints
+- Project path: `/home/user/project`
+- Flow file: `/home/user/project/flow.py`
+- The flow name must be `webhook-flow`.
+- The deployment name must be exactly `event-deployment`.
+- The trigger must expect the event `custom.webhook.received`.
+- The trigger must match the resource `prefect.resource.id` to `my.webhook.resource`.
+EOF
+Trial custom_result_serializers__ghwv2cE failed: Docker compose command failed for environment custom_result_serializers. Command: docker compose --project-name custom_result_serializers__ghwv2ce --project-directory /home/kw/code/zealt/prefect-benchmark/tasks/custom_result_serializers/environment -f /home/kw/.local/share/uv/tools/harbor/lib/python3.12/site-packages/harbor/environments/docker/docker-compose-base.yaml -f /home/kw/.local/share/uv/tools/harbor/lib/python3.12/site-packages/harbor/environments/docker/docker-compose-build.yaml build. Return code: 1. Stdout:  Image custom_result_serializers__ghwv2ce-main Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 660B done
+#1 DONE 0.0s
+
+#2 [internal] load build definition from Dockerfile
+#2 transferring dockerfile: 739B done
+#2 DONE 0.2s
+
+#3 [internal] load metadata for docker.io/library/ubuntu:24.04
+#3 DONE 0.2s
+
+#4 [1/5] FROM docker.io/library/ubuntu:24.04@sha256:d1e2e92c075e5ca139d51a140fff46f84315c0fdce203eab2807c7e495eff4f9
+#4 resolve docker.io/library/ubuntu:24.04@sha256:d1e2e92c075e5ca139d51a140fff46f84315c0fdce203eab2807c7e495eff4f9 0.2s done
+#4 DONE 0.3s
+
+#5 [internal] load .dockerignore
+#5 transferring context: 2B done
+#5 DONE 0.1s
+
+#6 [2/5] RUN apt-get update -y &&     DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends         curl ca-certificates git python3 python3-pip python3-pytest bash &&     apt-get clean &&     rm -rf /var/lib/apt/lists/*
+#6 CACHED
+
+#7 [3/5] RUN pip3 install --break-system-packages prefect
+#7 3.328 Collecting prefect
+#7 3.755   Downloading prefect-3.7.0-py3-none-any.whl.metadata (14 kB)
+#7 4.369 Collecting aiosqlite<1.0.0,>=0.17.0 (from prefect)
+#7 4.511   Downloading aiosqlite-0.22.1-py3-none-any.whl.metadata (4.3 kB)
+#7 5.487 Collecting alembic<2.0.0,>=1.7.5 (from prefect)
+#7 5.631   Downloading alembic-1.18.4-py3-none-any.whl.metadata (7.2 kB)
+#7 6.203 Collecting amplitude-analytics<2.0.0,>=1.2.1 (from prefect)
+#7 6.355   Downloading amplitude_analytics-1.2.3-py3-none-any.whl.metadata (3.3 kB)
+#7 8.785 Collecting anyio<5.0.0,>=4.4.0 (from prefect)
+#7 8.936   Downloading anyio-4.13.0-py3-none-any.whl.metadata (4.5 kB)
+#7 10.68 Collecting apprise<2.0.0,>=1.1.0 (from prefect)
+#7 10.82   Downloading apprise-1.10.0-py3-none-any.whl.metadata (58 kB)
+#7 11.72      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 58.4/58.4 kB 76.4 kB/s eta 0:00:00
+#7 12.09 Collecting asgi-lifespan<3.0,>=1.0 (from prefect)
+#7 12.24   Downloading asgi_lifespan-2.1.0-py3-none-any.whl.metadata (10 kB)
+#7 13.96 Collecting asyncpg<1.0.0,>=0.23 (from prefect)
+#7 14.11   Downloading asyncpg-0.31.0-cp312-cp312-manylinux_2_28_x86_64.whl.metadata (4.4 kB)
+#7 14.64 Collecting cachetools<8.0,>=5.3 (from prefect)
+#7 14.98   Downloading cachetools-7.1.1-py3-none-any.whl.metadata (5.8 kB)
+#7 15.41 Collecting click<9,>=8.0 (from prefect)
+#7 15.56   Downloading click-8.3.3-py3-none-any.whl.metadata (2.6 kB)
+#7 16.12 Collecting cloudpickle<4.0,>=2.0 (from prefect)
+#7 16.26   Downloading cloudpickle-3.1.2-py3-none-any.whl.metadata (7.1 kB)
+#7 17.72 Collecting coolname<6.0.0,>=1.0.4 (from prefect)
+#7 17.87   Downloading coolname-5.0.0-py3-none-any.whl.metadata (4.9 kB)
+#7 23.88 Collecting cryptography>=36.0.1 (from prefect)
+#7 24.03   Downloading cryptography-48.0.0-cp311-abi3-manylinux_2_34_x86_64.whl.metadata (4.3 kB)
+#7 26.42 Collecting cyclopts>=4.8.0 (from prefect)
+#7 26.59   Downloading cyclopts-4.12.0-py3-none-any.whl.metadata (12 kB)
+#7 27.50 Collecting dateparser<2.0.0,>=1.1.1 (from prefect)
+#7 27.67   Downloading dateparser-1.4.0-py3-none-any.whl.metadata (31 kB)
+#7 29.26 Collecting docker<8.0,>=4.0 (from prefect)
+#7 29.42   Downloading docker-7.1.0-py3-none-any.whl.metadata (3.8 kB)
+#7 29.77 Collecting exceptiongroup>=1.0.0 (from prefect)
+#7 29.95   Downloading exceptiongroup-1.3.1-py3-none-any.whl.metadata (6.7 kB)
+#7 31.02 Collecting fastapi<1.0.0,>=0.111.0 (from prefect)
+#7 31.20   Downloading fastapi-0.136.1-py3-none-any.whl.metadata (28 kB)
+#7 32.47 Collecting fsspec>=2022.5.0 (from prefect)
+#7 32.64   Downloading fsspec-2026.4.0-py3-none-any.whl.metadata (10 kB)
+#7 34.25 Collecting graphviz>=0.20.1 (from prefect)
+#7 34.41   Downloading graphviz-0.21-py3-none-any.whl.metadata (12 kB)
+#7 35.26 Collecting griffe<3.0.0,>=0.49.0 (from prefect)
+#7 35.64   Downloading griffe-2.0.2-py3-none-any.whl.metadata (12 kB)
+#7 36.02 Collecting httpcore<2.0.0,>=1.0.5 (from prefect)
+#7 36.16   Downloading httpcore-1.0.9-py3-none-any.whl.metadata (21 kB)
+#7 37.02 Collecting httpx!=0.23.2,>=0.23 (from httpx[http2]!=0.23.2,>=0.23->prefect)
+#7 37.17   Downloading httpx-0.28.1-py3-none-any.whl.metadata (7.1 kB)
+#7 38.73 Collecting humanize<5.0.0,>=4.9.0 (from prefect)
+#7 38.89   Downloading humanize-4.15.0-py3-none-any.whl.metadata (7.8 kB)
+#7 39.24 Collecting jinja2-humanize-extension>=0.4.0 (from prefect)
+#7 39.41   Downloading jinja2_humanize_extension-0.4.0-py3-none-any.whl.metadata (3.6 kB)
+#7 40.03 Collecting jinja2<4.0.0,>=3.1.6 (from prefect)
+#7 40.18   Downloading jinja2-3.1.6-py3-none-any.whl.metadata (2.9 kB)
+#7 40.68 Collecting jsonpatch<2.0,>=1.32 (from prefect)
+#7 40.84   Downloading jsonpatch-1.33-py2.py3-none-any.whl.metadata (3.0 kB)
+#7 41.36 Collecting jsonschema<5.0.0,>=4.18.0 (from prefect)
+#7 41.68   Downloading jsonschema-4.26.0-py3-none-any.whl.metadata (7.6 kB)
+#7 42.16 Collecting opentelemetry-api<2.0.0,>=1.27.0 (from prefect)
+#7 42.32   Downloading opentelemetry_api-1.41.1-py3-none-any.whl.metadata (1.5 kB)
+#7 45.76 Collecting orjson<4.0,>=3.7 (from prefect)
+#7 45.92   Downloading orjson-3.11.9-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (41 kB)
+#7 47.59      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 42.0/42.0 kB 25.5 kB/s eta 0:00:00
+#7 47.60 Requirement already satisfied: packaging<26.3,>=21.3 in /usr/lib/python3/dist-packages (from prefect) (24.0)
+#7 47.99 Collecting pathspec>=0.8.0 (from prefect)
+#7 48.14   Downloading pathspec-1.1.1-py3-none-any.whl.metadata (14 kB)
+#7 49.45 Collecting pendulum<4,>=3.1.0 (from prefect)
+#7 49.60   Downloading pendulum-3.2.0-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (6.8 kB)
+#7 50.47 Collecting pluggy>=1.6.0 (from prefect)
+#7 50.62   Downloading pluggy-1.6.0-py3-none-any.whl.metadata (4.8 kB)
+#7 51.16 Collecting prometheus-client>=0.20.0 (from prefect)
+#7 51.31   Downloading prometheus_client-0.25.0-py3-none-any.whl.metadata (2.1 kB)
+#7 54.69 Collecting pydantic!=2.11.0,!=2.11.1,!=2.11.2,!=2.11.3,!=2.11.4,<3.0.0,>=2.10.1 (from prefect)
+#7 55.22   Downloading pydantic-2.13.4-py3-none-any.whl.metadata (109 kB)
+#7 58.79      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 109.4/109.4 kB 27.8 kB/s eta 0:00:00
+#7 64.63 Collecting pydantic-core<3.0.0,>=2.12.0 (from prefect)
+#7 64.79   Downloading pydantic_core-2.46.4-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (6.6 kB)
+#7 65.25 Collecting pydantic-extra-types<3.0.0,>=2.8.2 (from prefect)
+#7 65.41   Downloading pydantic_extra_types-2.11.1-py3-none-any.whl.metadata (4.2 kB)
+#7 65.83 Collecting pydantic-settings!=2.9.0,<3.0.0,>2.2.1 (from prefect)
+#7 65.98   Downloading pydantic_settings-2.14.1-py3-none-any.whl.metadata (3.4 kB)
+#7 66.45 Collecting pydocket>=0.19.0 (from prefect)
+#7 66.60   Downloading pydocket-0.20.2-py3-none-any.whl.metadata (6.8 kB)
+#7 66.90 Collecting python-dateutil<3.0.0,>=2.8.2 (from prefect)
+#7 67.04   Downloading python_dateutil-2.9.0.post0-py2.py3-none-any.whl.metadata (8.4 kB)
+#7 67.38 Collecting python-slugify<9.0,>=5.0 (from prefect)
+#7 67.53   Downloading python_slugify-8.0.4-py2.py3-none-any.whl.metadata (8.5 kB)
+#7 68.31 Collecting pytz<2027,>=2021.1 (from prefect)
+#7 68.66   Downloading pytz-2026.2-py2.py3-none-any.whl.metadata (22 kB)
+#7 69.31 Collecting pyyaml<7.0.0,>=5.4.1 (from prefect)
+#7 69.48   Downloading pyyaml-6.0.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (2.4 kB)
+#7 69.74 Collecting readchar<5.0.0,>=4.0.0 (from prefect)
+#7 69.89   Downloading readchar-4.2.2-py3-none-any.whl.metadata (7.5 kB)
+#7 70.20 Collecting rfc3339-validator<0.2.0,>=0.1.4 (from prefect)
+#7 70.35   Downloading rfc3339_validator-0.1.4-py2.py3-none-any.whl.metadata (1.5 kB)
+#7 71.05 Collecting rich<16.0,>=11.0 (from prefect)
+#7 71.20   Downloading rich-15.0.0-py3-none-any.whl.metadata (18 kB)
+#7 71.93 Collecting ruamel-yaml-clib>=0.2.8 (from prefect)
+#7 73.30   Downloading ruamel_yaml_clib-0.2.15-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (3.5 kB)
+#7 74.57 Collecting ruamel-yaml>=0.17.0 (from prefect)
+#7 74.72   Downloading ruamel_yaml-0.19.1-py3-none-any.whl.metadata (16 kB)
+#7 75.71 Collecting semver>=3.0.4 (from prefect)
+#7 76.03   Downloading semver-3.0.4-py3-none-any.whl.metadata (6.8 kB)
+#7 76.24 Collecting sniffio<2.0.0,>=1.3.0 (from prefect)
+#7 76.39   Downloading sniffio-1.3.1-py3-none-any.whl.metadata (3.9 kB)
+#7 78.68 Collecting sqlalchemy<3.0.0,>=2.0 (from sqlalchemy[asyncio]<3.0.0,>=2.0->prefect)
+#7 78.83   Downloading sqlalchemy-2.0.49-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (9.5 kB)
+#7 80.28 Collecting toml>=0.10.0 (from prefect)
+#7 80.44   Downloading toml-0.10.2-py2.py3-none-any.whl.metadata (7.1 kB)
+#7 80.77 Collecting typing-extensions<5.0.0,>=4.10.0 (from prefect)
+#7 81.10   Downloading typing_extensions-4.15.0-py3-none-any.whl.metadata (3.3 kB)
+#7 81.65 Collecting uvicorn!=0.29.0,>=0.14.0 (from prefect)
+#7 81.80   Downloading uvicorn-0.46.0-py3-none-any.whl.metadata (6.7 kB)
+#7 83.60 Collecting websockets<17.0,>=15.0.1 (from prefect)
+#7 83.76   Downloading websockets-16.0-cp312-cp312-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl.metadata (6.8 kB)
+#7 84.37 Collecting Mako (from alembic<2.0.0,>=1.7.5->prefect)
+#7 84.51   Downloading mako-1.3.12-py3-none-any.whl.metadata (2.9 kB)
+#7 84.84 Collecting idna>=2.8 (from anyio<5.0.0,>=4.4.0->prefect)
+#7 85.00   Downloading idna-3.15-py3-none-any.whl.metadata (7.7 kB)
+#7 86.12 Collecting requests (from apprise<2.0.0,>=1.1.0->prefect)
+#7 86.46   Downloading requests-2.34.1-py3-none-any.whl.metadata (4.8 kB)
+#7 86.81 Collecting requests-oauthlib (from apprise<2.0.0,>=1.1.0->prefect)
+#7 86.97   Downloading requests_oauthlib-2.0.0-py2.py3-none-any.whl.metadata (11 kB)
+#7 87.71 Collecting markdown (from apprise<2.0.0,>=1.1.0->prefect)
+#7 88.05   Downloading markdown-3.10.2-py3-none-any.whl.metadata (5.1 kB)
+#7 88.53 Collecting certifi (from apprise<2.0.0,>=1.1.0->prefect)
+#7 88.69   Downloading certifi-2026.4.22-py3-none-any.whl.metadata (2.5 kB)
+#7 91.68 Collecting cffi>=2.0.0 (from cryptography>=36.0.1->prefect)
+#7 91.83   Downloading cffi-2.0.0-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (2.6 kB)
+#7 92.40 Collecting attrs>=23.1.0 (from cyclopts>=4.8.0->prefect)
+#7 92.56   Downloading attrs-26.1.0-py3-none-any.whl.metadata (8.8 kB)
+#7 93.08 Collecting docstring-parser<4.0,>=0.15 (from cyclopts>=4.8.0->prefect)
+#7 93.40   Downloading docstring_parser-0.18.0-py3-none-any.whl.metadata (3.5 kB)
+#7 93.93 Collecting rich-rst<2.0.0,>=1.3.1 (from cyclopts>=4.8.0->prefect)
+#7 94.09   Downloading rich_rst-1.3.2-py3-none-any.whl.metadata (6.1 kB)
+#7 99.40 Collecting regex>=2024.9.11 (from dateparser<2.0.0,>=1.1.1->prefect)
+#7 99.81   Downloading regex-2026.5.9-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (40 kB)
+#7 100.5      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 40.4/40.4 kB 143.6 kB/s eta 0:00:00
+#7 100.9 Collecting tzlocal>=0.2 (from dateparser<2.0.0,>=1.1.1->prefect)
+#7 101.1   Downloading tzlocal-5.3.1-py3-none-any.whl.metadata (7.6 kB)
+#7 101.7 Collecting urllib3>=1.26.0 (from docker<8.0,>=4.0->prefect)
+#7 101.9   Downloading urllib3-2.7.0-py3-none-any.whl.metadata (6.9 kB)
+#7 102.8 Collecting starlette>=0.46.0 (from fastapi<1.0.0,>=0.111.0->prefect)
+#7 102.9   Downloading starlette-1.0.0-py3-none-any.whl.metadata (6.3 kB)
+#7 103.6 Collecting typing-inspection>=0.4.2 (from fastapi<1.0.0,>=0.111.0->prefect)
+#7 103.8   Downloading typing_inspection-0.4.2-py3-none-any.whl.metadata (2.6 kB)
+#7 104.2 Collecting annotated-doc>=0.0.2 (from fastapi<1.0.0,>=0.111.0->prefect)
+#7 104.3   Downloading annotated_doc-0.0.4-py3-none-any.whl.metadata (6.6 kB)
+#7 104.8 Collecting griffecli==2.0.2 (from griffe<3.0.0,>=0.49.0->prefect)
+#7 104.9   Downloading griffecli-2.0.2-py3-none-any.whl.metadata (1.2 kB)
+#7 105.6 Collecting griffelib==2.0.2 (from griffe<3.0.0,>=0.49.0->prefect)
+#7 105.8   Downloading griffelib-2.0.2-py3-none-any.whl.metadata (1.3 kB)
+#7 106.1 Collecting colorama>=0.4 (from griffecli==2.0.2->griffe<3.0.0,>=0.49.0->prefect)
+#7 106.2   Downloading colorama-0.4.6-py2.py3-none-any.whl.metadata (17 kB)
+#7 107.4 Collecting h11>=0.16 (from httpcore<2.0.0,>=1.0.5->prefect)
+#7 107.5   Downloading h11-0.16.0-py3-none-any.whl.metadata (8.3 kB)
+#7 109.5 Collecting h2<5,>=3 (from httpx[http2]!=0.23.2,>=0.23->prefect)
+#7 109.7   Downloading h2-4.3.0-py3-none-any.whl.metadata (5.1 kB)
+#7 115.1 Collecting MarkupSafe>=2.0 (from jinja2<4.0.0,>=3.1.6->prefect)
+#7 115.2   Downloading markupsafe-3.0.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (2.7 kB)
+#7 115.6 Collecting jsonpointer>=1.9 (from jsonpatch<2.0,>=1.32->prefect)
+#7 115.8   Downloading jsonpointer-3.1.1-py3-none-any.whl.metadata (2.4 kB)
+#7 117.7 Collecting jsonschema-specifications>=2023.03.6 (from jsonschema<5.0.0,>=4.18.0->prefect)
+#7 117.8   Downloading jsonschema_specifications-2025.9.1-py3-none-any.whl.metadata (2.9 kB)
+#7 118.9 Collecting referencing>=0.28.4 (from jsonschema<5.0.0,>=4.18.0->prefect)
+#7 119.1   Downloading referencing-0.37.0-py3-none-any.whl.metadata (2.8 kB)
+#7 125.7 Collecting rpds-py>=0.25.0 (from jsonschema<5.0.0,>=4.18.0->prefect)
+#7 125.9   Downloading rpds_py-0.30.0-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (4.1 kB)
+#7 126.6 Collecting importlib-metadata<8.8.0,>=6.0 (from opentelemetry-api<2.0.0,>=1.27.0->prefect)
+#7 126.7   Downloading importlib_metadata-8.7.1-py3-none-any.whl.metadata (4.7 kB)
+#7 128.3 Collecting tzdata>=2020.1 (from pendulum<4,>=3.1.0->prefect)
+#7 128.4   Downloading tzdata-2026.2-py2.py3-none-any.whl.metadata (1.4 kB)
+#7 128.8 Collecting annotated-types>=0.6.0 (from pydantic!=2.11.0,!=2.11.1,!=2.11.2,!=2.11.3,!=2.11.4,<3.0.0,>=2.10.1->prefect)
+#7 129.0   Downloading annotated_types-0.7.0-py3-none-any.whl.metadata (15 kB)
+#7 129.6 Collecting python-dotenv>=0.21.0 (from pydantic-settings!=2.9.0,<3.0.0,>2.2.1->prefect)
+#7 130.0   Downloading python_dotenv-1.2.2-py3-none-any.whl.metadata (27 kB)
+#7 130.8 Collecting burner-redis>=0.1.7 (from pydocket>=0.19.0->prefect)
+#7 131.0   Downloading burner_redis-0.1.7-cp310-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (4.8 kB)
+#7 131.5 Collecting cronsim>=2.6 (from pydocket>=0.19.0->prefect)
+#7 131.6   Downloading cronsim-2.7-py3-none-any.whl.metadata (6.9 kB)
+#7 132.2 Collecting py-key-value-aio>=0.3.0 (from py-key-value-aio[memory,redis]>=0.3.0->pydocket>=0.19.0->prefect)
+#7 132.3   Downloading py_key_value_aio-0.4.4-py3-none-any.whl.metadata (15 kB)
+#7 133.3 Collecting python-json-logger>=2.0.7 (from pydocket>=0.19.0->prefect)
+#7 133.5   Downloading python_json_logger-4.1.0-py3-none-any.whl.metadata (3.7 kB)
+#7 135.0 Collecting redis>=5 (from pydocket>=0.19.0->prefect)
+#7 135.2   Downloading redis-7.4.0-py3-none-any.whl.metadata (12 kB)
+#7 136.1 Collecting typer>=0.15.1 (from pydocket>=0.19.0->prefect)
+#7 136.2   Downloading typer-0.25.1-py3-none-any.whl.metadata (15 kB)
+#7 136.9 Collecting uncalled-for>=0.3.2 (from pydocket>=0.19.0->prefect)
+#7 137.0   Downloading uncalled_for-0.3.2-py3-none-any.whl.metadata (2.9 kB)
+#7 137.4 Collecting six>=1.5 (from python-dateutil<3.0.0,>=2.8.2->prefect)
+#7 137.7   Downloading six-1.17.0-py2.py3-none-any.whl.metadata (1.7 kB)
+#7 138.0 Collecting text-unidecode>=1.3 (from python-slugify<9.0,>=5.0->prefect)
+#7 138.2   Downloading text_unidecode-1.3-py2.py3-none-any.whl.metadata (2.4 kB)
+#7 138.8 Collecting markdown-it-py>=2.2.0 (from rich<16.0,>=11.0->prefect)
+#7 139.0   Downloading markdown_it_py-4.2.0-py3-none-any.whl.metadata (7.4 kB)
+#7 140.3 Collecting pygments<3.0.0,>=2.13.0 (from rich<16.0,>=11.0->prefect)
+#7 140.4   Downloading pygments-2.20.0-py3-none-any.whl.metadata (2.5 kB)
+#7 145.1 Collecting greenlet>=1 (from sqlalchemy<3.0.0,>=2.0->sqlalchemy[asyncio]<3.0.0,>=2.0->prefect)
+#7 145.2   Downloading greenlet-3.5.0-cp312-cp312-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl.metadata (3.7 kB)
+#7 146.3 Collecting pycparser (from cffi>=2.0.0->cryptography>=36.0.1->prefect)
+#7 146.4   Downloading pycparser-3.0-py3-none-any.whl.metadata (8.2 kB)
+#7 147.1 Collecting hyperframe<7,>=6.1 (from h2<5,>=3->httpx[http2]!=0.23.2,>=0.23->prefect)
+#7 147.3   Downloading hyperframe-6.1.0-py3-none-any.whl.metadata (4.3 kB)
+#7 147.6 Collecting hpack<5,>=4.1 (from h2<5,>=3->httpx[http2]!=0.23.2,>=0.23->prefect)
+#7 147.7   Downloading hpack-4.1.0-py3-none-any.whl.metadata (4.6 kB)
+#7 148.5 Collecting zipp>=3.20 (from importlib-metadata<8.8.0,>=6.0->opentelemetry-api<2.0.0,>=1.27.0->prefect)
+#7 148.6   Downloading zipp-3.23.1-py3-none-any.whl.metadata (3.6 kB)
+#7 149.1 Collecting mdurl~=0.1 (from markdown-it-py>=2.2.0->rich<16.0,>=11.0->prefect)
+#7 149.2   Downloading mdurl-0.1.2-py3-none-any.whl.metadata (1.6 kB)
+#7 149.7 Collecting beartype>=0.20.0 (from py-key-value-aio>=0.3.0->py-key-value-aio[memory,redis]>=0.3.0->pydocket>=0.19.0->prefect)
+#7 149.9   Downloading beartype-0.22.9-py3-none-any.whl.metadata (37 kB)
+#7 153.6 Collecting charset_normalizer<4,>=2 (from requests->apprise<2.0.0,>=1.1.0->prefect)
+#7 153.8   Downloading charset_normalizer-3.4.7-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (40 kB)
+#7 154.7      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 40.9/40.9 kB 78.1 kB/s eta 0:00:00
+#7 155.4 Collecting docutils (from rich-rst<2.0.0,>=1.3.1->cyclopts>=4.8.0->prefect)
+#7 155.6   Downloading docutils-0.22.4-py3-none-any.whl.metadata (15 kB)
+#7 157.3 Collecting shellingham>=1.3.0 (from typer>=0.15.1->pydocket>=0.19.0->prefect)
+#7 157.6   Downloading shellingham-1.5.4-py2.py3-none-any.whl.metadata (3.5 kB)
+#7 158.2 Collecting oauthlib>=3.0.0 (from requests-oauthlib->apprise<2.0.0,>=1.1.0->prefect)
+#7 158.5   Downloading oauthlib-3.3.1-py3-none-any.whl.metadata (7.9 kB)
+#7 159.0 Downloading prefect-3.7.0-py3-none-any.whl (14.7 MB)
+#7 203.9    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 14.7/14.7 MB 750.3 kB/s eta 0:00:00
+#7 204.0 Downloading aiosqlite-0.22.1-py3-none-any.whl (17 kB)
+#7 204.3 Downloading alembic-1.18.4-py3-none-any.whl (263 kB)
+#7 204.7    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 263.9/263.9 kB 732.2 kB/s eta 0:00:00
+#7 204.8 Downloading amplitude_analytics-1.2.3-py3-none-any.whl (24 kB)
+#7 205.0 Downloading anyio-4.13.0-py3-none-any.whl (114 kB)
+#7 205.4    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 114.4/114.4 kB 2.2 MB/s eta 0:00:00
+#7 205.7 Downloading apprise-1.10.0-py3-none-any.whl (1.6 MB)
+#7 207.3    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.6/1.6 MB 1.0 MB/s eta 0:00:00
+#7 207.5 Downloading asgi_lifespan-2.1.0-py3-none-any.whl (10 kB)
+#7 207.6 Downloading asyncpg-0.31.0-cp312-cp312-manylinux_2_28_x86_64.whl (3.5 MB)
+#7 211.1    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.5/3.5 MB 1.2 MB/s eta 0:00:00
+#7 211.2 Downloading cachetools-7.1.1-py3-none-any.whl (16 kB)
+#7 211.5 Downloading click-8.3.3-py3-none-any.whl (110 kB)
+#7 211.9    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 110.5/110.5 kB 271.7 kB/s eta 0:00:00
+#7 212.1 Downloading cloudpickle-3.1.2-py3-none-any.whl (22 kB)
+#7 212.4 Downloading coolname-5.0.0-py3-none-any.whl (47 kB)
+#7 212.7    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 47.4/47.4 kB 347.1 kB/s eta 0:00:00
+#7 212.9 Downloading cryptography-48.0.0-cp311-abi3-manylinux_2_34_x86_64.whl (4.7 MB)
+#7 223.4    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.7/4.7 MB 460.3 kB/s eta 0:00:00
+#7 223.5 Downloading cyclopts-4.12.0-py3-none-any.whl (213 kB)
+#7 224.1    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 213.7/213.7 kB 561.6 kB/s eta 0:00:00
+#7 224.2 Downloading dateparser-1.4.0-py3-none-any.whl (300 kB)
+#7 224.8    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 300.4/300.4 kB 1.4 MB/s eta 0:00:00
+#7 225.1 Downloading docker-7.1.0-py3-none-any.whl (147 kB)
+#7 225.3    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 147.8/147.8 kB 826.5 kB/s eta 0:00:00
+#7 225.4 Downloading exceptiongroup-1.3.1-py3-none-any.whl (16 kB)
+#7 225.8 Downloading fastapi-0.136.1-py3-none-any.whl (117 kB)
+#7 226.2    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 117.7/117.7 kB 403.9 kB/s eta 0:00:00
+#7 226.6 Downloading fsspec-2026.4.0-py3-none-any.whl (203 kB)
+#7 227.4    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 203.4/203.4 kB 242.9 kB/s eta 0:00:00
+#7 227.5 Downloading graphviz-0.21-py3-none-any.whl (47 kB)
+#7 227.8    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 47.3/47.3 kB 522.3 kB/s eta 0:00:00
+#7 227.9 Downloading griffe-2.0.2-py3-none-any.whl (5.1 kB)
+#7 228.2 Downloading griffecli-2.0.2-py3-none-any.whl (9.5 kB)
+#7 228.6 Downloading griffelib-2.0.2-py3-none-any.whl (142 kB)
+#7 229.2    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 142.4/142.4 kB 803.1 kB/s eta 0:00:00
+#7 229.4 Downloading httpcore-1.0.9-py3-none-any.whl (78 kB)
+#7 229.9    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 78.8/78.8 kB 131.3 kB/s eta 0:00:00
+#7 230.2 Downloading httpx-0.28.1-py3-none-any.whl (73 kB)
+#7 230.5    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 73.5/73.5 kB 289.9 kB/s eta 0:00:00
+#7 230.6 Downloading humanize-4.15.0-py3-none-any.whl (132 kB)
+#7 231.1    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 132.2/132.2 kB 576.5 kB/s eta 0:00:00
+#7 231.2 Downloading jinja2-3.1.6-py3-none-any.whl (134 kB)
+#7 231.6    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 134.9/134.9 kB 564.4 kB/s eta 0:00:00
+#7 231.8 Downloading jinja2_humanize_extension-0.4.0-py3-none-any.whl (4.8 kB)
+#7 232.1 Downloading jsonpatch-1.33-py2.py3-none-any.whl (12 kB)
+#7 232.5 Downloading jsonschema-4.26.0-py3-none-any.whl (90 kB)
+#7 232.8    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 90.6/90.6 kB 281.6 kB/s eta 0:00:00
+#7 232.9 Downloading opentelemetry_api-1.41.1-py3-none-any.whl (69 kB)
+#7 233.2    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 69.0/69.0 kB 421.8 kB/s eta 0:00:00
+#7 233.4 Downloading orjson-3.11.9-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (134 kB)
+#7 235.1    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 134.0/134.0 kB 84.7 kB/s eta 0:00:00
+#7 235.2 Downloading pathspec-1.1.1-py3-none-any.whl (57 kB)
+#7 235.6    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 57.3/57.3 kB 124.4 kB/s eta 0:00:00
+#7 235.8 Downloading pendulum-3.2.0-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (348 kB)
+#7 236.9    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 348.9/348.9 kB 367.0 kB/s eta 0:00:00
+#7 237.0 Downloading pluggy-1.6.0-py3-none-any.whl (20 kB)
+#7 237.4 Downloading prometheus_client-0.25.0-py3-none-any.whl (64 kB)
+#7 238.0    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 64.2/64.2 kB 110.6 kB/s eta 0:00:00
+#7 238.2 Downloading pydantic-2.13.4-py3-none-any.whl (472 kB)
+#7 239.5    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 472.3/472.3 kB 521.1 kB/s eta 0:00:00
+#7 239.6 Downloading pydantic_core-2.46.4-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (2.1 MB)
+#7 243.7    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.1/2.1 MB 536.1 kB/s eta 0:00:00
+#7 243.9 Downloading pydantic_extra_types-2.11.1-py3-none-any.whl (79 kB)
+#7 244.2    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 79.5/79.5 kB 639.1 kB/s eta 0:00:00
+#7 244.5 Downloading pydantic_settings-2.14.1-py3-none-any.whl (60 kB)
+#7 244.5    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 61.0/61.0 kB 1.3 MB/s eta 0:00:00
+#7 244.7 Downloading pydocket-0.20.2-py3-none-any.whl (110 kB)
+#7 245.3    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 110.3/110.3 kB 384.7 kB/s eta 0:00:00
+#7 245.4 Downloading python_dateutil-2.9.0.post0-py2.py3-none-any.whl (229 kB)
+#7 246.1    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 229.9/229.9 kB 513.0 kB/s eta 0:00:00
+#7 246.2 Downloading python_slugify-8.0.4-py2.py3-none-any.whl (10 kB)
+#7 246.5 Downloading pytz-2026.2-py2.py3-none-any.whl (510 kB)
+#7 247.7    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 510.1/510.1 kB 523.6 kB/s eta 0:00:00
+#7 247.8 Downloading pyyaml-6.0.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (807 kB)
+#7 249.9    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 807.9/807.9 kB 416.4 kB/s eta 0:00:00
+#7 250.1 Downloading readchar-4.2.2-py3-none-any.whl (9.4 kB)
+#7 250.4 Downloading rfc3339_validator-0.1.4-py2.py3-none-any.whl (3.5 kB)
+#7 250.8 Downloading rich-15.0.0-py3-none-any.whl (310 kB)
+#7 252.1    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 310.7/310.7 kB 261.4 kB/s eta 0:00:00
+#7 252.3 Downloading ruamel_yaml-0.19.1-py3-none-any.whl (118 kB)
+#7 252.7    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 118.1/118.1 kB 518.0 kB/s eta 0:00:00
+#7 252.8 Downloading ruamel_yaml_clib-0.2.15-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (788 kB)
+#7 255.3    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 788.2/788.2 kB 378.2 kB/s eta 0:00:00
+#7 255.6 Downloading semver-3.0.4-py3-none-any.whl (17 kB)
+#7 258.5 Downloading sniffio-1.3.1-py3-none-any.whl (10 kB)
+#7 259.3 Downloading sqlalchemy-2.0.49-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (3.4 MB)
+#7 266.4    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.4/3.4 MB 476.0 kB/s eta 0:00:00
+#7 266.7 Downloading toml-0.10.2-py2.py3-none-any.whl (16 kB)
+#7 266.8 Downloading typing_extensions-4.15.0-py3-none-any.whl (44 kB)
+#7 267.6    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 44.6/44.6 kB 48.7 kB/s eta 0:00:00
+#7 267.7 Downloading uvicorn-0.46.0-py3-none-any.whl (70 kB)
+#7 268.0    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 70.9/70.9 kB 714.1 kB/s eta 0:00:00
+#7 268.1 Downloading websockets-16.0-cp312-cp312-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (184 kB)
+#7 268.5    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 184.9/184.9 kB 1.3 MB/s eta 0:00:00
+#7 268.6 Downloading annotated_doc-0.0.4-py3-none-any.whl (5.3 kB)
+#7 269.3 Downloading annotated_types-0.7.0-py3-none-any.whl (13 kB)
+#7 269.9 Downloading attrs-26.1.0-py3-none-any.whl (67 kB)
+#7 270.4    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 67.5/67.5 kB 168.2 kB/s eta 0:00:00
+#7 270.5 Downloading burner_redis-0.1.7-cp310-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (1.4 MB)
+#7 273.2    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.4/1.4 MB 599.1 kB/s eta 0:00:00
+#7 273.4 Downloading cffi-2.0.0-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (219 kB)
+#7 273.8    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 219.6/219.6 kB 767.2 kB/s eta 0:00:00
+#7 274.0 Downloading cronsim-2.7-py3-none-any.whl (14 kB)
+#7 274.3 Downloading docstring_parser-0.18.0-py3-none-any.whl (22 kB)
+#7 274.7 Downloading greenlet-3.5.0-cp312-cp312-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl (611 kB)
+#7 276.3    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 611.4/611.4 kB 426.5 kB/s eta 0:00:00
+#7 276.4 Downloading h11-0.16.0-py3-none-any.whl (37 kB)
+#7 276.8 Downloading h2-4.3.0-py3-none-any.whl (61 kB)
+#7 277.0    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 61.8/61.8 kB 206.9 kB/s eta 0:00:00
+#7 277.2 Downloading idna-3.15-py3-none-any.whl (72 kB)
+#7 277.7    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 72.3/72.3 kB 236.8 kB/s eta 0:00:00
+#7 278.0 Downloading importlib_metadata-8.7.1-py3-none-any.whl (27 kB)
+#7 278.2 Downloading jsonpointer-3.1.1-py3-none-any.whl (7.7 kB)
+#7 278.6 Downloading jsonschema_specifications-2025.9.1-py3-none-any.whl (18 kB)
+#7 279.0 Downloading markdown_it_py-4.2.0-py3-none-any.whl (91 kB)
+#7 279.5    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 91.7/91.7 kB 180.1 kB/s eta 0:00:00
+#7 279.8 Downloading markupsafe-3.0.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (22 kB)
+#7 280.0 Downloading py_key_value_aio-0.4.4-py3-none-any.whl (152 kB)
+#7 281.3    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 152.3/152.3 kB 117.3 kB/s eta 0:00:00
+#7 281.5 Downloading pygments-2.20.0-py3-none-any.whl (1.2 MB)
+#7 285.4    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.2/1.2 MB 335.0 kB/s eta 0:00:00
+#7 285.5 Downloading python_dotenv-1.2.2-py3-none-any.whl (22 kB)
+#7 286.2 Downloading python_json_logger-4.1.0-py3-none-any.whl (15 kB)
+#7 286.4 Downloading redis-7.4.0-py3-none-any.whl (409 kB)
+#7 287.5    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 409.8/409.8 kB 419.4 kB/s eta 0:00:00
+#7 287.8 Downloading referencing-0.37.0-py3-none-any.whl (26 kB)
+#7 288.0 Downloading regex-2026.5.9-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (801 kB)
+#7 289.7    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 801.2/801.2 kB 466.0 kB/s eta 0:00:00
+#7 290.0 Downloading requests-2.34.1-py3-none-any.whl (73 kB)
+#7 293.4    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 73.1/73.1 kB 19.0 kB/s eta 0:00:00
+#7 293.7 Downloading certifi-2026.4.22-py3-none-any.whl (135 kB)
+#7 294.8    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 135.7/135.7 kB 112.1 kB/s eta 0:00:00
+#7 295.1 Downloading rich_rst-1.3.2-py3-none-any.whl (12 kB)
+#7 296.2 Downloading rpds_py-0.30.0-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (394 kB)
+#7 297.1    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 394.1/394.1 kB 457.7 kB/s eta 0:00:00
+#7 297.4 Downloading six-1.17.0-py2.py3-none-any.whl (11 kB)
+#7 297.6 Downloading starlette-1.0.0-py3-none-any.whl (72 kB)
+#7 298.4    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 72.7/72.7 kB 73.4 kB/s eta 0:00:00
+#7 298.6 Downloading text_unidecode-1.3-py2.py3-none-any.whl (78 kB)
+#7 298.8    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 78.2/78.2 kB 931.7 kB/s eta 0:00:00
+#7 299.0 Downloading typer-0.25.1-py3-none-any.whl (58 kB)
+#7 299.2    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 58.4/58.4 kB 204.4 kB/s eta 0:00:00
+#7 299.4 Downloading typing_inspection-0.4.2-py3-none-any.whl (14 kB)
+#7 300.2 Downloading tzdata-2026.2-py2.py3-none-any.whl (349 kB)
+#7 301.5    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 349.3/349.3 kB 308.0 kB/s eta 0:00:00
+#7 301.6 Downloading tzlocal-5.3.1-py3-none-any.whl (18 kB)
+#7 302.0 Downloading uncalled_for-0.3.2-py3-none-any.whl (11 kB)
+#7 302.2 Downloading urllib3-2.7.0-py3-none-any.whl (131 kB)
+#7 302.7    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 131.1/131.1 kB 877.7 kB/s eta 0:00:00
+#7 302.9 Downloading mako-1.3.12-py3-none-any.whl (78 kB)
+#7 303.2    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 78.5/78.5 kB 507.0 kB/s eta 0:00:00
+#7 303.4 Downloading markdown-3.10.2-py3-none-any.whl (108 kB)
+#7 303.9    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 108.2/108.2 kB 320.7 kB/s eta 0:00:00
+#7 304.0 Downloading requests_oauthlib-2.0.0-py2.py3-none-any.whl (24 kB)
+#7 304.9 Downloading beartype-0.22.9-py3-none-any.whl (1.3 MB)
+#7 308.4    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.3/1.3 MB 412.7 kB/s eta 0:00:00
+#7 308.5 Downloading charset_normalizer-3.4.7-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (216 kB)
+#7 309.0    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 216.6/216.6 kB 663.4 kB/s eta 0:00:00
+#7 309.2 Downloading colorama-0.4.6-py2.py3-none-any.whl (25 kB)
+#7 310.2 Downloading hpack-4.1.0-py3-none-any.whl (34 kB)
+#7 310.5 Downloading hyperframe-6.1.0-py3-none-any.whl (13 kB)
+#7 310.9 Downloading mdurl-0.1.2-py3-none-any.whl (10.0 kB)
+#7 311.2 Downloading oauthlib-3.3.1-py3-none-any.whl (160 kB)
+#7 312.3    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 160.1/160.1 kB 174.3 kB/s eta 0:00:00
+#7 312.7 Downloading shellingham-1.5.4-py2.py3-none-any.whl (9.8 kB)
+#7 312.8 Downloading zipp-3.23.1-py3-none-any.whl (10 kB)
+#7 313.0 Downloading docutils-0.22.4-py3-none-any.whl (633 kB)
+#7 315.2    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 633.2/633.2 kB 295.0 kB/s eta 0:00:00
+#7 315.5 Downloading pycparser-3.0-py3-none-any.whl (48 kB)
+#7 315.6    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 48.2/48.2 kB 862.8 kB/s eta 0:00:00
+#7 316.6 Installing collected packages: text-unidecode, pytz, zipp, websockets, urllib3, uncalled-for, tzlocal, tzdata, typing-extensions, toml, sniffio, six, shellingham, semver, ruamel-yaml-clib, ruamel-yaml, rpds-py, regex, redis, readchar, pyyaml, python-slugify, python-json-logger, python-dotenv, pygments, pycparser, prometheus-client, pluggy, pathspec, orjson, oauthlib, mdurl, MarkupSafe, markdown, jsonpointer, idna, hyperframe, humanize, hpack, h11, griffelib, greenlet, graphviz, fsspec, docutils, docstring-parser, cronsim, coolname, colorama, cloudpickle, click, charset_normalizer, certifi, cachetools, burner-redis, beartype, attrs, asyncpg, annotated-types, annotated-doc, amplitude-analytics, aiosqlite, uvicorn, typing-inspection, sqlalchemy, rfc3339-validator, requests, referencing, python-dateutil, pydantic-core, py-key-value-aio, markdown-it-py, Mako, jsonpatch, jinja2, importlib-metadata, httpcore, h2, griffecli, exceptiongroup, cffi, asgi-lifespan, anyio, starlette, rich, requests-oauthlib, pydantic, pendulum, opentelemetry-api, jsonschema-specifications, jinja2-humanize-extension, httpx, griffe, docker, dateparser, cryptography, alembic, typer, rich-rst, pydantic-settings, pydantic-extra-types, jsonschema, fastapi, apprise, pydocket, cyclopts, prefect
+#7 318.9   Attempting uninstall: pluggy
+#7 318.9     Found existing installation: pluggy 1.4.0
+#7 318.9 ERROR: Cannot uninstall pluggy 1.4.0, RECORD file not found. Hint: The package was installed by debian.
+#7 ERROR: process "/bin/sh -c pip3 install --break-system-packages prefect" did not complete successfully: exit code: 1
+------
+ > [3/5] RUN pip3 install --break-system-packages prefect:
+312.7 Downloading shellingham-1.5.4-py2.py3-none-any.whl (9.8 kB)
+312.8 Downloading zipp-3.23.1-py3-none-any.whl (10 kB)
+313.0 Downloading docutils-0.22.4-py3-none-any.whl (633 kB)
+
+315.5 Downloading pycparser-3.0-py3-none-any.whl (48 kB)
+315.6    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 48.2/48.2 kB 862.8 kB/s eta 0:00:00
+316.6 Installing collected packages: text-unidecode, pytz, zipp, websockets, urllib3, uncalled-for, tzlocal, tzdata, typing-extensions, toml, sniffio, six, shellingham, semver, ruamel-yaml-clib, ruamel-yaml, rpds-py, regex, redis, readchar, pyyaml, python-slugify, python-json-logger, python-dotenv, pygments, pycparser, prometheus-client, pluggy, pathspec, orjson, oauthlib, mdurl, MarkupSafe, markdown, jsonpointer, idna, hyperframe, humanize, hpack, h11, griffelib, greenlet, graphviz, fsspec, docutils, docstring-parser, cronsim, coolname, colorama, cloudpickle, click, charset_normalizer, certifi, cachetools, burner-redis, beartype, attrs, asyncpg, annotated-types, annotated-doc, amplitude-analytics, aiosqlite, uvicorn, typing-inspection, sqlalchemy, rfc3339-validator, requests, referencing, python-dateutil, pydantic-core, py-key-value-aio, markdown-it-py, Mako, jsonpatch, jinja2, importlib-metadata, httpcore, h2, griffecli, exceptiongroup, cffi, asgi-lifespan, anyio, starlette, rich, requests-oauthlib, pydantic, pendulum, opentelemetry-api, jsonschema-specifications, jinja2-humanize-extension, httpx, griffe, docker, dateparser, cryptography, alembic, typer, rich-rst, pydantic-settings, pydantic-extra-types, jsonschema, fastapi, apprise, pydocket, cyclopts, prefect
+318.9   Attempting uninstall: pluggy
+318.9     Found existing installation: pluggy 1.4.0
+318.9 ERROR: Cannot uninstall pluggy 1.4.0, RECORD file not found. Hint: The package was installed by debian.
+------
+Dockerfile:9
+
+--------------------
+
+   7 |         rm -rf /var/lib/apt/lists/*
+
+   8 |     
+
+   9 | >>> RUN pip3 install --break-system-packages prefect
+
+  10 |     
+
+  11 |     RUN mkdir -p /home/user && chmod 0755 /home/user
+
+--------------------
+
+failed to solve: process "/bin/sh -c pip3 install --break-system-packages prefect" did not complete successfully: exit code: 1
+
+. Stderr: None. 
+Failed to download artifact '/home/user' (best-effort)
+Not retrying trial because the maximum number of retries has been reached
+Running command: apt-get update && apt-get install -y curl ripgrep
+Command outputs captured
+Running command: set -euo pipefail; curl -fsSL https://getpochi.com/install.sh | bash  && mkdir -p /logs/agent/pochi && ~/.pochi/bin/pochi --version
+Command outputs captured
+Running command: ln -sf ~/.pochi/bin/pochi /usr/local/bin/pochi
+Command outputs captured
+Running command: echo flow_serve_cron_schedule__aBNxFGv > /logs/artifacts/trial_id
+Command outputs captured
+Running command: mkdir -p ~/.pochi && cat << 'EOF' | sed -e "s/OPENAI_API_KEY/${OPENAI_API_KEY}/g" -e "s/DEEPINFRA_API_KEY/${DEEPINFRA_API_KEY}/g" -e "s/ANTHROPIC_API_KEY/${ANTHROPIC_API_KEY}/g" > ~/.pochi/config.jsonc
+{
+  "providers": {
+    "deepinfra": {
+      "kind": "openai",
+      "baseURL": "https://api.deepinfra.com/v1/openai",
+      "apiKey": "DEEPINFRA_API_KEY",
+      "models": {
+        "zai-org/GLM-4.7-Flash": {
+          "name": "glm-4.7-flash"
+        },
+        "moonshotai/Kimi-K2.6": {
+          "name": "kimi-K2.6"
+        },
+        "deepseek-ai/DeepSeek-V4-Pro": {
+          "name": "DeepSeek-V4-Pro"
+        }
+      }
+    },
+    "anthropic": {
+      "kind": "openai",
+      "baseURL": "https://api.anthropic.com/v1",
+      "apiKey": "ANTHROPIC_API_KEY",
+      "models": {
+        "claude-opus-4-6": {
+          "name": "claude-opus-4-6"
+        }
+      }
+    },
+    "openai": {
+      "kind": "openai",
+      "baseURL": "https://api.openai.com/v1",
+      "apiKey": "OPENAI_API_KEY",
+      "models": {
+        "gpt-5.4": {
+          "name": "gpt-5.4"
+        }
+      }
+    }
+  }
+}
+EOF
+Command outputs captured
+Running command: mkdir -p /logs/artifacts
+Command outputs captured
+Running command: export PATH="$HOME/.pochi/bin:$PATH"; pochi --model zai/glm-4.7 --max-steps 200 --max-retries 10 --blobs-dir /logs/agent/pochi/blobs --experimental-stream-trajectory /logs/agent/pochi/trajectory.jsonl > >(tee /logs/agent/pochi/stdout.txt) 2> >(tee /logs/agent/pochi/stderr.txt >&2) <<'EOF'
+# Serve a Prefect Flow with a Cron Schedule
+
+## Background
+Prefect allows you to easily schedule flows using the `serve` method. You can also securely manage sensitive information using `Secret` blocks.
+
+## Requirements
+- Create a Prefect `Secret` block named `my-api-key` containing the value `super-secret-value`.
+- Create a Python script `/home/user/project/serve_flow.py`.
+- The script must define a flow named `my_flow` that loads the `my-api-key` Secret block and prints its value.
+- The script must serve the flow with the deployment name `my-deployment` and a cron schedule `0 9 * * *`.
+- Run the script in the background so the deployment is actively served.
+
+## Constraints
+- Project path: `/home/user/project`
+- The script must be named `/home/user/project/serve_flow.py`.
+EOF
+Command outputs captured
+Running command: rm -f ~/.pochi/config.jsonc
+Command outputs captured
+The verifier.env contains an API key (often the case for LLM-based verifiers). You will incur costs associated with the API calls.
+Running command: apt-get update && apt-get install -y curl ripgrep
+Command outputs captured
+Running command: set -euo pipefail; curl -fsSL https://getpochi.com/install.sh | bash  && mkdir -p /logs/agent/pochi && ~/.pochi/bin/pochi --version
+Trial deployment_docker_infrastructure__YYyb7pv failed: Docker compose command failed for environment deployment_docker_infrastructure. Command: docker compose --project-name deployment_docker_infrastructure__yyyb7pv --project-directory /home/kw/code/zealt/prefect-benchmark/tasks/deployment_docker_infrastructure/environment -f /home/kw/.local/share/uv/tools/harbor/lib/python3.12/site-packages/harbor/environments/docker/docker-compose-base.yaml -f /home/kw/.local/share/uv/tools/harbor/lib/python3.12/site-packages/harbor/environments/docker/docker-compose-build.yaml build. Return code: 1. Stdout:  Image deployment_docker_infrastructure__yyyb7pv-main Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 688B done
+#1 DONE 0.0s
+
+#2 [internal] load build definition from Dockerfile
+#2 transferring dockerfile: 725B done
+#2 DONE 0.0s
+
+#3 [internal] load metadata for docker.io/library/ubuntu:24.04
+#3 DONE 0.1s
+
+#4 [1/5] FROM docker.io/library/ubuntu:24.04@sha256:d1e2e92c075e5ca139d51a140fff46f84315c0fdce203eab2807c7e495eff4f9
+#4 resolve docker.io/library/ubuntu:24.04@sha256:d1e2e92c075e5ca139d51a140fff46f84315c0fdce203eab2807c7e495eff4f9 0.2s done
+#4 DONE 0.3s
+
+#5 [2/5] RUN apt-get update -y &&     DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends         curl ca-certificates git python3 python3-pip python3-pytest bash &&     apt-get clean &&     rm -rf /var/lib/apt/lists/*
+#5 CACHED
+
+#6 [internal] load .dockerignore
+#6 transferring context: 2B done
+#6 DONE 0.0s
+
+#7 [3/4] RUN pip3 install --break-system-packages prefect prefect-docker pluggy
+#7 2.923 Collecting prefect
+#7 3.527   Downloading prefect-3.7.0-py3-none-any.whl.metadata (14 kB)
+#7 4.630 Collecting prefect-docker
+#7 4.771   Downloading prefect_docker-0.7.2-py3-none-any.whl.metadata (1.6 kB)
+#7 4.784 Requirement already satisfied: pluggy in /usr/lib/python3/dist-packages (1.4.0)
+#7 5.033 Collecting aiosqlite<1.0.0,>=0.17.0 (from prefect)
+#7 5.348   Downloading aiosqlite-0.22.1-py3-none-any.whl.metadata (4.3 kB)
+#7 5.799 Collecting alembic<2.0.0,>=1.7.5 (from prefect)
+#7 5.944   Downloading alembic-1.18.4-py3-none-any.whl.metadata (7.2 kB)
+#7 6.609 Collecting amplitude-analytics<2.0.0,>=1.2.1 (from prefect)
+#7 6.756   Downloading amplitude_analytics-1.2.3-py3-none-any.whl.metadata (3.3 kB)
+#7 7.427 Collecting anyio<5.0.0,>=4.4.0 (from prefect)
+#7 7.575   Downloading anyio-4.13.0-py3-none-any.whl.metadata (4.5 kB)
+#7 8.968 Collecting apprise<2.0.0,>=1.1.0 (from prefect)
+#7 9.111   Downloading apprise-1.10.0-py3-none-any.whl.metadata (58 kB)
+#7 9.954      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 58.4/58.4 kB 82.3 kB/s eta 0:00:00
+#7 10.23 Collecting asgi-lifespan<3.0,>=1.0 (from prefect)
+#7 10.38   Downloading asgi_lifespan-2.1.0-py3-none-any.whl.metadata (10 kB)
+#7 13.86 Collecting asyncpg<1.0.0,>=0.23 (from prefect)
+#7 14.01   Downloading asyncpg-0.31.0-cp312-cp312-manylinux_2_28_x86_64.whl.metadata (4.4 kB)
+#7 15.53 Collecting cachetools<8.0,>=5.3 (from prefect)
+#7 15.84   Downloading cachetools-7.1.1-py3-none-any.whl.metadata (5.8 kB)
+#7 16.62 Collecting click<9,>=8.0 (from prefect)
+#7 16.77   Downloading click-8.3.3-py3-none-any.whl.metadata (2.6 kB)
+#7 17.53 Collecting cloudpickle<4.0,>=2.0 (from prefect)
+#7 17.69   Downloading cloudpickle-3.1.2-py3-none-any.whl.metadata (7.1 kB)
+#7 18.57 Collecting coolname<6.0.0,>=1.0.4 (from prefect)
+#7 18.71   Downloading coolname-5.0.0-py3-none-any.whl.metadata (4.9 kB)
+#7 23.68 Collecting cryptography>=36.0.1 (from prefect)
+#7 23.82   Downloading cryptography-48.0.0-cp311-abi3-manylinux_2_34_x86_64.whl.metadata (4.3 kB)
+#7 24.53 Collecting cyclopts>=4.8.0 (from prefect)
+#7 24.68   Downloading cyclopts-4.12.0-py3-none-any.whl.metadata (12 kB)
+#7 25.35 Collecting dateparser<2.0.0,>=1.1.1 (from prefect)
+#7 25.49   Downloading dateparser-1.4.0-py3-none-any.whl.metadata (31 kB)
+#7 26.71 Collecting docker<8.0,>=4.0 (from prefect)
+#7 26.90   Downloading docker-7.1.0-py3-none-any.whl.metadata (3.8 kB)
+#7 27.68 Collecting exceptiongroup>=1.0.0 (from prefect)
+#7 27.83   Downloading exceptiongroup-1.3.1-py3-none-any.whl.metadata (6.7 kB)
+#7 29.80 Collecting fastapi<1.0.0,>=0.111.0 (from prefect)
+#7 29.96   Downloading fastapi-0.136.1-py3-none-any.whl.metadata (28 kB)
+#7 31.02 Collecting fsspec>=2022.5.0 (from prefect)
+#7 31.35   Downloading fsspec-2026.4.0-py3-none-any.whl.metadata (10 kB)
+#7 31.79 Collecting graphviz>=0.20.1 (from prefect)
+#7 31.94   Downloading graphviz-0.21-py3-none-any.whl.metadata (12 kB)
+#7 32.86 Collecting griffe<3.0.0,>=0.49.0 (from prefect)
+#7 33.02   Downloading griffe-2.0.2-py3-none-any.whl.metadata (12 kB)
+#7 33.70 Collecting httpcore<2.0.0,>=1.0.5 (from prefect)
+#7 33.85   Downloading httpcore-1.0.9-py3-none-any.whl.metadata (21 kB)
+#7 34.69 Collecting httpx!=0.23.2,>=0.23 (from httpx[http2]!=0.23.2,>=0.23->prefect)
+#7 35.16   Downloading httpx-0.28.1-py3-none-any.whl.metadata (7.1 kB)
+#7 35.59 Collecting humanize<5.0.0,>=4.9.0 (from prefect)
+#7 35.92   Downloading humanize-4.15.0-py3-none-any.whl.metadata (7.8 kB)
+#7 36.13 Collecting jinja2-humanize-extension>=0.4.0 (from prefect)
+#7 36.44   Downloading jinja2_humanize_extension-0.4.0-py3-none-any.whl.metadata (3.6 kB)
+#7 36.97 Collecting jinja2<4.0.0,>=3.1.6 (from prefect)
+#7 37.14   Downloading jinja2-3.1.6-py3-none-any.whl.metadata (2.9 kB)
+#7 37.52 Collecting jsonpatch<2.0,>=1.32 (from prefect)
+#7 38.18   Downloading jsonpatch-1.33-py2.py3-none-any.whl.metadata (3.0 kB)
+#7 38.73 Collecting jsonschema<5.0.0,>=4.18.0 (from prefect)
+#7 38.89   Downloading jsonschema-4.26.0-py3-none-any.whl.metadata (7.6 kB)
+#7 40.65 Collecting opentelemetry-api<2.0.0,>=1.27.0 (from prefect)
+#7 40.80   Downloading opentelemetry_api-1.41.1-py3-none-any.whl.metadata (1.5 kB)
+#7 45.95 Collecting orjson<4.0,>=3.7 (from prefect)
+#7 46.09   Downloading orjson-3.11.9-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (41 kB)
+#7 47.16      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 42.0/42.0 kB 67.3 kB/s eta 0:00:00
+#7 47.18 Requirement already satisfied: packaging<26.3,>=21.3 in /usr/lib/python3/dist-packages (from prefect) (24.0)
+#7 47.56 Collecting pathspec>=0.8.0 (from prefect)
+#7 47.72   Downloading pathspec-1.1.1-py3-none-any.whl.metadata (14 kB)
+#7 48.84 Collecting pendulum<4,>=3.1.0 (from prefect)
+#7 49.16   Downloading pendulum-3.2.0-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (6.8 kB)
+#7 49.84 Collecting pluggy
+#7 49.99   Downloading pluggy-1.6.0-py3-none-any.whl.metadata (4.8 kB)
+#7 50.44 Collecting prometheus-client>=0.20.0 (from prefect)
+#7 50.77   Downloading prometheus_client-0.25.0-py3-none-any.whl.metadata (2.1 kB)
+#7 52.47 Collecting pydantic!=2.11.0,!=2.11.1,!=2.11.2,!=2.11.3,!=2.11.4,<3.0.0,>=2.10.1 (from prefect)
+#7 52.62   Downloading pydantic-2.13.4-py3-none-any.whl.metadata (109 kB)
+#7 54.54      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 109.4/109.4 kB 60.9 kB/s eta 0:00:00
+#7 60.87 Collecting pydantic-core<3.0.0,>=2.12.0 (from prefect)
+#7 61.02   Downloading pydantic_core-2.46.4-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (6.6 kB)
+#7 61.29 Collecting pydantic-extra-types<3.0.0,>=2.8.2 (from prefect)
+#7 61.44   Downloading pydantic_extra_types-2.11.1-py3-none-any.whl.metadata (4.2 kB)
+#7 61.84 Collecting pydantic-settings!=2.9.0,<3.0.0,>2.2.1 (from prefect)
+#7 62.02   Downloading pydantic_settings-2.14.1-py3-none-any.whl.metadata (3.4 kB)
+#7 62.42 Collecting pydocket>=0.19.0 (from prefect)
+#7 62.57   Downloading pydocket-0.20.2-py3-none-any.whl.metadata (6.8 kB)
+#7 63.31 Collecting python-dateutil<3.0.0,>=2.8.2 (from prefect)
+#7 63.46   Downloading python_dateutil-2.9.0.post0-py2.py3-none-any.whl.metadata (8.4 kB)
+#7 63.77 Collecting python-slugify<9.0,>=5.0 (from prefect)
+#7 63.92   Downloading python_slugify-8.0.4-py2.py3-none-any.whl.metadata (8.5 kB)
+#7 64.50 Collecting pytz<2027,>=2021.1 (from prefect)
+#7 64.64   Downloading pytz-2026.2-py2.py3-none-any.whl.metadata (22 kB)
+#7 65.63 Collecting pyyaml<7.0.0,>=5.4.1 (from prefect)
+#7 65.78   Downloading pyyaml-6.0.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (2.4 kB)
+#7 66.17 Collecting readchar<5.0.0,>=4.0.0 (from prefect)
+#7 66.49   Downloading readchar-4.2.2-py3-none-any.whl.metadata (7.5 kB)
+#7 67.29 Collecting rfc3339-validator<0.2.0,>=0.1.4 (from prefect)
+#7 67.44   Downloading rfc3339_validator-0.1.4-py2.py3-none-any.whl.metadata (1.5 kB)
+#7 68.48 Collecting rich<16.0,>=11.0 (from prefect)
+#7 68.83   Downloading rich-15.0.0-py3-none-any.whl.metadata (18 kB)
+#7 70.60 Collecting ruamel-yaml-clib>=0.2.8 (from prefect)
+#7 70.74   Downloading ruamel_yaml_clib-0.2.15-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (3.5 kB)
+#7 72.65 Collecting ruamel-yaml>=0.17.0 (from prefect)
+#7 72.80   Downloading ruamel_yaml-0.19.1-py3-none-any.whl.metadata (16 kB)
+#7 73.61 Collecting semver>=3.0.4 (from prefect)
+#7 73.93   Downloading semver-3.0.4-py3-none-any.whl.metadata (6.8 kB)
+#7 74.25 Collecting sniffio<2.0.0,>=1.3.0 (from prefect)
+#7 74.40   Downloading sniffio-1.3.1-py3-none-any.whl.metadata (3.9 kB)
+#7 77.00 Collecting sqlalchemy<3.0.0,>=2.0 (from sqlalchemy[asyncio]<3.0.0,>=2.0->prefect)
+#7 77.36   Downloading sqlalchemy-2.0.49-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (9.5 kB)
+#7 77.65 Collecting toml>=0.10.0 (from prefect)
+#7 77.98   Downloading toml-0.10.2-py2.py3-none-any.whl.metadata (7.1 kB)
+#7 78.82 Collecting typing-extensions<5.0.0,>=4.10.0 (from prefect)
+#7 78.97   Downloading typing_extensions-4.15.0-py3-none-any.whl.metadata (3.3 kB)
+#7 79.95 Collecting uvicorn!=0.29.0,>=0.14.0 (from prefect)
+#7 80.29   Downloading uvicorn-0.46.0-py3-none-any.whl.metadata (6.7 kB)
+#7 81.28 Collecting websockets<17.0,>=15.0.1 (from prefect)
+#7 81.61   Downloading websockets-16.0-cp312-cp312-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl.metadata (6.8 kB)
+#7 82.72 Collecting python-on-whales>=0.81 (from prefect-docker)
+#7 82.88   Downloading python_on_whales-0.81.0-py3-none-any.whl.metadata (18 kB)
+#7 83.85 Collecting Mako (from alembic<2.0.0,>=1.7.5->prefect)
+#7 84.01   Downloading mako-1.3.12-py3-none-any.whl.metadata (2.9 kB)
+#7 84.76 Collecting idna>=2.8 (from anyio<5.0.0,>=4.4.0->prefect)
+#7 85.12   Downloading idna-3.15-py3-none-any.whl.metadata (7.7 kB)
+#7 85.66 Collecting requests (from apprise<2.0.0,>=1.1.0->prefect)
+#7 85.82   Downloading requests-2.34.1-py3-none-any.whl.metadata (4.8 kB)
+#7 86.08 Collecting requests-oauthlib (from apprise<2.0.0,>=1.1.0->prefect)
+#7 86.62   Downloading requests_oauthlib-2.0.0-py2.py3-none-any.whl.metadata (11 kB)
+#7 86.86 Collecting markdown (from apprise<2.0.0,>=1.1.0->prefect)
+#7 87.02   Downloading markdown-3.10.2-py3-none-any.whl.metadata (5.1 kB)
+#7 87.49 Collecting certifi (from apprise<2.0.0,>=1.1.0->prefect)
+#7 87.64   Downloading certifi-2026.4.22-py3-none-any.whl.metadata (2.5 kB)
+#7 90.40 Collecting cffi>=2.0.0 (from cryptography>=36.0.1->prefect)
+#7 90.57   Downloading cffi-2.0.0-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (2.6 kB)
+#7 90.93 Collecting attrs>=23.1.0 (from cyclopts>=4.8.0->prefect)
+#7 91.09   Downloading attrs-26.1.0-py3-none-any.whl.metadata (8.8 kB)
+#7 91.94 Collecting docstring-parser<4.0,>=0.15 (from cyclopts>=4.8.0->prefect)
+#7 92.10   Downloading docstring_parser-0.18.0-py3-none-any.whl.metadata (3.5 kB)
+#7 92.56 Collecting rich-rst<2.0.0,>=1.3.1 (from cyclopts>=4.8.0->prefect)
+#7 92.72   Downloading rich_rst-1.3.2-py3-none-any.whl.metadata (6.1 kB)
+#7 98.87 Collecting regex>=2024.9.11 (from dateparser<2.0.0,>=1.1.1->prefect)
+#7 99.24   Downloading regex-2026.5.9-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (40 kB)
+#7 100.0      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 40.4/40.4 kB 73.5 kB/s eta 0:00:00
+#7 100.4 Collecting tzlocal>=0.2 (from dateparser<2.0.0,>=1.1.1->prefect)
+#7 100.5   Downloading tzlocal-5.3.1-py3-none-any.whl.metadata (7.6 kB)
+#7 101.2 Collecting urllib3>=1.26.0 (from docker<8.0,>=4.0->prefect)
+#7 101.4   Downloading urllib3-2.7.0-py3-none-any.whl.metadata (6.9 kB)
+#7 102.1 Collecting starlette>=0.46.0 (from fastapi<1.0.0,>=0.111.0->prefect)
+#7 102.2   Downloading starlette-1.0.0-py3-none-any.whl.metadata (6.3 kB)
+#7 103.3 Collecting typing-inspection>=0.4.2 (from fastapi<1.0.0,>=0.111.0->prefect)
+#7 103.4   Downloading typing_inspection-0.4.2-py3-none-any.whl.metadata (2.6 kB)
+#7 104.1 Collecting annotated-doc>=0.0.2 (from fastapi<1.0.0,>=0.111.0->prefect)
+#7 104.4   Downloading annotated_doc-0.0.4-py3-none-any.whl.metadata (6.6 kB)
+#7 104.7 Collecting griffecli==2.0.2 (from griffe<3.0.0,>=0.49.0->prefect)
+#7 104.9   Downloading griffecli-2.0.2-py3-none-any.whl.metadata (1.2 kB)
+#7 105.1 Collecting griffelib==2.0.2 (from griffe<3.0.0,>=0.49.0->prefect)
+#7 105.2   Downloading griffelib-2.0.2-py3-none-any.whl.metadata (1.3 kB)
+#7 105.6 Collecting colorama>=0.4 (from griffecli==2.0.2->griffe<3.0.0,>=0.49.0->prefect)
+#7 105.7   Downloading colorama-0.4.6-py2.py3-none-any.whl.metadata (17 kB)
+#7 110.1 Collecting h11>=0.16 (from httpcore<2.0.0,>=1.0.5->prefect)
+#7 110.3   Downloading h11-0.16.0-py3-none-any.whl.metadata (8.3 kB)
+#7 112.5 Collecting h2<5,>=3 (from httpx[http2]!=0.23.2,>=0.23->prefect)
+#7 112.7   Downloading h2-4.3.0-py3-none-any.whl.metadata (5.1 kB)
+#7 113.7 Collecting MarkupSafe>=2.0 (from jinja2<4.0.0,>=3.1.6->prefect)
+#7 113.8   Downloading markupsafe-3.0.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (2.7 kB)
+#7 114.9 Collecting jsonpointer>=1.9 (from jsonpatch<2.0,>=1.32->prefect)
+#7 115.0   Downloading jsonpointer-3.1.1-py3-none-any.whl.metadata (2.4 kB)
+#7 115.4 Collecting jsonschema-specifications>=2023.03.6 (from jsonschema<5.0.0,>=4.18.0->prefect)
+#7 115.7   Downloading jsonschema_specifications-2025.9.1-py3-none-any.whl.metadata (2.9 kB)
+#7 116.2 Collecting referencing>=0.28.4 (from jsonschema<5.0.0,>=4.18.0->prefect)
+#7 116.4   Downloading referencing-0.37.0-py3-none-any.whl.metadata (2.8 kB)
+#7 120.2 Collecting rpds-py>=0.25.0 (from jsonschema<5.0.0,>=4.18.0->prefect)
+#7 120.6   Downloading rpds_py-0.30.0-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (4.1 kB)
+#7 121.9 Collecting importlib-metadata<8.8.0,>=6.0 (from opentelemetry-api<2.0.0,>=1.27.0->prefect)
+#7 122.0   Downloading importlib_metadata-8.7.1-py3-none-any.whl.metadata (4.7 kB)
+#7 122.6 Collecting tzdata>=2020.1 (from pendulum<4,>=3.1.0->prefect)
+#7 122.7   Downloading tzdata-2026.2-py2.py3-none-any.whl.metadata (1.4 kB)
+#7 123.0 Collecting annotated-types>=0.6.0 (from pydantic!=2.11.0,!=2.11.1,!=2.11.2,!=2.11.3,!=2.11.4,<3.0.0,>=2.10.1->prefect)
+#7 123.1   Downloading annotated_types-0.7.0-py3-none-any.whl.metadata (15 kB)
+#7 123.9 Collecting python-dotenv>=0.21.0 (from pydantic-settings!=2.9.0,<3.0.0,>2.2.1->prefect)
+#7 124.1   Downloading python_dotenv-1.2.2-py3-none-any.whl.metadata (27 kB)
+#7 124.9 Collecting burner-redis>=0.1.7 (from pydocket>=0.19.0->prefect)
+#7 125.0   Downloading burner_redis-0.1.7-cp310-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (4.8 kB)
+#7 125.3 Collecting cronsim>=2.6 (from pydocket>=0.19.0->prefect)
+#7 125.5   Downloading cronsim-2.7-py3-none-any.whl.metadata (6.9 kB)
+#7 126.1 Collecting py-key-value-aio>=0.3.0 (from py-key-value-aio[memory,redis]>=0.3.0->pydocket>=0.19.0->prefect)
+#7 126.2   Downloading py_key_value_aio-0.4.4-py3-none-any.whl.metadata (15 kB)
+#7 126.8 Collecting python-json-logger>=2.0.7 (from pydocket>=0.19.0->prefect)
+#7 126.9   Downloading python_json_logger-4.1.0-py3-none-any.whl.metadata (3.7 kB)
+#7 127.7 Collecting redis>=5 (from pydocket>=0.19.0->prefect)
+#7 127.8   Downloading redis-7.4.0-py3-none-any.whl.metadata (12 kB)
+#7 128.4 Collecting typer>=0.15.1 (from pydocket>=0.19.0->prefect)
+#7 128.6   Downloading typer-0.25.1-py3-none-any.whl.metadata (15 kB)
+#7 129.5 Collecting uncalled-for>=0.3.2 (from pydocket>=0.19.0->prefect)
+#7 129.7   Downloading uncalled_for-0.3.2-py3-none-any.whl.metadata (2.9 kB)
+#7 130.0 Collecting six>=1.5 (from python-dateutil<3.0.0,>=2.8.2->prefect)
+#7 130.1   Downloading six-1.17.0-py2.py3-none-any.whl.metadata (1.7 kB)
+#7 130.4 Collecting text-unidecode>=1.3 (from python-slugify<9.0,>=5.0->prefect)
+#7 130.8   Downloading text_unidecode-1.3-py2.py3-none-any.whl.metadata (2.4 kB)
+#7 131.1 Collecting markdown-it-py>=2.2.0 (from rich<16.0,>=11.0->prefect)
+#7 131.3   Downloading markdown_it_py-4.2.0-py3-none-any.whl.metadata (7.4 kB)
+#7 132.4 Collecting pygments<3.0.0,>=2.13.0 (from rich<16.0,>=11.0->prefect)
+#7 132.6   Downloading pygments-2.20.0-py3-none-any.whl.metadata (2.5 kB)
+#7 136.3 Collecting greenlet>=1 (from sqlalchemy<3.0.0,>=2.0->sqlalchemy[asyncio]<3.0.0,>=2.0->prefect)
+#7 136.6   Downloading greenlet-3.5.0-cp312-cp312-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl.metadata (3.7 kB)
+#7 137.3 Collecting pycparser (from cffi>=2.0.0->cryptography>=36.0.1->prefect)
+#7 137.5   Downloading pycparser-3.0-py3-none-any.whl.metadata (8.2 kB)
+#7 137.9 Collecting hyperframe<7,>=6.1 (from h2<5,>=3->httpx[http2]!=0.23.2,>=0.23->prefect)
+#7 138.0   Downloading hyperframe-6.1.0-py3-none-any.whl.metadata (4.3 kB)
+#7 139.7 Collecting hpack<5,>=4.1 (from h2<5,>=3->httpx[http2]!=0.23.2,>=0.23->prefect)
+#7 139.9   Downloading hpack-4.1.0-py3-none-any.whl.metadata (4.6 kB)
+#7 140.8 Collecting zipp>=3.20 (from importlib-metadata<8.8.0,>=6.0->opentelemetry-api<2.0.0,>=1.27.0->prefect)
+#7 141.0   Downloading zipp-3.23.1-py3-none-any.whl.metadata (3.6 kB)
+#7 141.4 Collecting mdurl~=0.1 (from markdown-it-py>=2.2.0->rich<16.0,>=11.0->prefect)
+#7 141.8   Downloading mdurl-0.1.2-py3-none-any.whl.metadata (1.6 kB)
+#7 142.9 Collecting beartype>=0.20.0 (from py-key-value-aio>=0.3.0->py-key-value-aio[memory,redis]>=0.3.0->pydocket>=0.19.0->prefect)
+#7 143.1   Downloading beartype-0.22.9-py3-none-any.whl.metadata (37 kB)
+#7 149.9 Collecting charset_normalizer<4,>=2 (from requests->apprise<2.0.0,>=1.1.0->prefect)
+#7 150.0   Downloading charset_normalizer-3.4.7-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (40 kB)
+#7 151.9      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 40.9/40.9 kB 31.6 kB/s eta 0:00:00
+#7 152.4 Collecting docutils (from rich-rst<2.0.0,>=1.3.1->cyclopts>=4.8.0->prefect)
+#7 152.5   Downloading docutils-0.22.4-py3-none-any.whl.metadata (15 kB)
+#7 154.1 Collecting shellingham>=1.3.0 (from typer>=0.15.1->pydocket>=0.19.0->prefect)
+#7 154.3   Downloading shellingham-1.5.4-py2.py3-none-any.whl.metadata (3.5 kB)
+#7 156.1 Collecting oauthlib>=3.0.0 (from requests-oauthlib->apprise<2.0.0,>=1.1.0->prefect)
+#7 156.5   Downloading oauthlib-3.3.1-py3-none-any.whl.metadata (7.9 kB)
+#7 157.3 Downloading prefect-3.7.0-py3-none-any.whl (14.7 MB)
+#7 183.8    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 14.7/14.7 MB 1.1 MB/s eta 0:00:00
+#7 184.0 Downloading prefect_docker-0.7.2-py3-none-any.whl (30 kB)
+#7 184.3 Downloading pluggy-1.6.0-py3-none-any.whl (20 kB)
+#7 184.8 Downloading aiosqlite-0.22.1-py3-none-any.whl (17 kB)
+#7 184.9 Downloading alembic-1.18.4-py3-none-any.whl (263 kB)
+#7 185.4    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 263.9/263.9 kB 930.9 kB/s eta 0:00:00
+#7 185.7 Downloading amplitude_analytics-1.2.3-py3-none-any.whl (24 kB)
+#7 185.9 Downloading anyio-4.13.0-py3-none-any.whl (114 kB)
+#7 186.3    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 114.4/114.4 kB 383.3 kB/s eta 0:00:00
+#7 186.5 Downloading apprise-1.10.0-py3-none-any.whl (1.6 MB)
+#7 188.1    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.6/1.6 MB 1.1 MB/s eta 0:00:00
+#7 188.2 Downloading asgi_lifespan-2.1.0-py3-none-any.whl (10 kB)
+#7 188.9 Downloading asyncpg-0.31.0-cp312-cp312-manylinux_2_28_x86_64.whl (3.5 MB)
+#7 192.0    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.5/3.5 MB 1.1 MB/s eta 0:00:00
+#7 192.1 Downloading cachetools-7.1.1-py3-none-any.whl (16 kB)
+#7 192.6 Downloading click-8.3.3-py3-none-any.whl (110 kB)
+#7 193.0    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 110.5/110.5 kB 460.6 kB/s eta 0:00:00
+#7 193.2 Downloading cloudpickle-3.1.2-py3-none-any.whl (22 kB)
+#7 193.7 Downloading coolname-5.0.0-py3-none-any.whl (47 kB)
+#7 193.8    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 47.4/47.4 kB 979.4 kB/s eta 0:00:00
+#7 193.9 Downloading cryptography-48.0.0-cp311-abi3-manylinux_2_34_x86_64.whl (4.7 MB)
+#7 203.7    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.7/4.7 MB 492.9 kB/s eta 0:00:00
+#7 203.9 Downloading cyclopts-4.12.0-py3-none-any.whl (213 kB)
+#7 204.3    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 213.7/213.7 kB 923.1 kB/s eta 0:00:00
+#7 204.4 Downloading dateparser-1.4.0-py3-none-any.whl (300 kB)
+#7 205.0    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 300.4/300.4 kB 753.9 kB/s eta 0:00:00
+#7 205.3 Downloading docker-7.1.0-py3-none-any.whl (147 kB)
+#7 205.6    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 147.8/147.8 kB 476.7 kB/s eta 0:00:00
+#7 205.8 Downloading exceptiongroup-1.3.1-py3-none-any.whl (16 kB)
+#7 206.4 Downloading fastapi-0.136.1-py3-none-any.whl (117 kB)
+#7 206.9    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 117.7/117.7 kB 396.2 kB/s eta 0:00:00
+#7 207.0 Downloading fsspec-2026.4.0-py3-none-any.whl (203 kB)
+#7 207.5    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 203.4/203.4 kB 444.0 kB/s eta 0:00:00
+#7 207.6 Downloading graphviz-0.21-py3-none-any.whl (47 kB)
+#7 208.0    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 47.3/47.3 kB 3.1 MB/s eta 0:00:00
+#7 208.2 Downloading griffe-2.0.2-py3-none-any.whl (5.1 kB)
+#7 208.3 Downloading griffecli-2.0.2-py3-none-any.whl (9.5 kB)
+#7 208.8 Downloading griffelib-2.0.2-py3-none-any.whl (142 kB)
+#7 209.2    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 142.4/142.4 kB 348.5 kB/s eta 0:00:00
+#7 209.8 Downloading httpcore-1.0.9-py3-none-any.whl (78 kB)
+#7 209.8    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 78.8/78.8 kB 6.3 MB/s eta 0:00:00
+#7 209.9 Downloading httpx-0.28.1-py3-none-any.whl (73 kB)
+#7 210.4    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 73.5/73.5 kB 236.7 kB/s eta 0:00:00
+#7 210.5 Downloading humanize-4.15.0-py3-none-any.whl (132 kB)
+#7 211.4    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 132.2/132.2 kB 192.0 kB/s eta 0:00:00
+#7 211.5 Downloading jinja2-3.1.6-py3-none-any.whl (134 kB)
+#7 212.0    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 134.9/134.9 kB 454.8 kB/s eta 0:00:00
+#7 212.1 Downloading jinja2_humanize_extension-0.4.0-py3-none-any.whl (4.8 kB)
+#7 213.0 Downloading jsonpatch-1.33-py2.py3-none-any.whl (12 kB)
+#7 213.4 Downloading jsonschema-4.26.0-py3-none-any.whl (90 kB)
+#7 214.0    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 90.6/90.6 kB 138.7 kB/s eta 0:00:00
+#7 214.1 Downloading opentelemetry_api-1.41.1-py3-none-any.whl (69 kB)
+#7 214.4    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 69.0/69.0 kB 522.8 kB/s eta 0:00:00
+#7 214.6 Downloading orjson-3.11.9-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (134 kB)
+#7 215.1    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 134.0/134.0 kB 230.3 kB/s eta 0:00:00
+#7 215.3 Downloading pathspec-1.1.1-py3-none-any.whl (57 kB)
+#7 215.7    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 57.3/57.3 kB 1.9 MB/s eta 0:00:00
+#7 215.8 Downloading pendulum-3.2.0-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (348 kB)
+#7 216.7    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 348.9/348.9 kB 498.2 kB/s eta 0:00:00
+#7 216.8 Downloading prometheus_client-0.25.0-py3-none-any.whl (64 kB)
+#7 217.1    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 64.2/64.2 kB 235.9 kB/s eta 0:00:00
+#7 217.2 Downloading pydantic-2.13.4-py3-none-any.whl (472 kB)
+#7 218.4    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 472.3/472.3 kB 488.7 kB/s eta 0:00:00
+#7 218.5 Downloading pydantic_core-2.46.4-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (2.1 MB)
+#7 222.5    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.1/2.1 MB 553.3 kB/s eta 0:00:00
+#7 222.7 Downloading pydantic_extra_types-2.11.1-py3-none-any.whl (79 kB)
+#7 223.0    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 79.5/79.5 kB 239.5 kB/s eta 0:00:00
+#7 223.1 Downloading pydantic_settings-2.14.1-py3-none-any.whl (60 kB)
+#7 223.3    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 61.0/61.0 kB 241.4 kB/s eta 0:00:00
+#7 223.5 Downloading pydocket-0.20.2-py3-none-any.whl (110 kB)
+#7 224.3    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 110.3/110.3 kB 158.6 kB/s eta 0:00:00
+#7 224.5 Downloading python_dateutil-2.9.0.post0-py2.py3-none-any.whl (229 kB)
+#7 225.1    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 229.9/229.9 kB 1.1 MB/s eta 0:00:00
+#7 225.2 Downloading python_on_whales-0.81.0-py3-none-any.whl (119 kB)
+#7 225.9    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 119.2/119.2 kB 173.3 kB/s eta 0:00:00
+#7 226.0 Downloading python_slugify-8.0.4-py2.py3-none-any.whl (10 kB)
+#7 226.2 Downloading pytz-2026.2-py2.py3-none-any.whl (510 kB)
+#7 227.5    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 510.1/510.1 kB 479.2 kB/s eta 0:00:00
+#7 227.6 Downloading pyyaml-6.0.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (807 kB)
+#7 229.2    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 807.9/807.9 kB 504.4 kB/s eta 0:00:00
+#7 229.4 Downloading readchar-4.2.2-py3-none-any.whl (9.4 kB)
+#7 229.6 Downloading rfc3339_validator-0.1.4-py2.py3-none-any.whl (3.5 kB)
+#7 229.7 Downloading rich-15.0.0-py3-none-any.whl (310 kB)
+#7 230.6    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 310.7/310.7 kB 358.8 kB/s eta 0:00:00
+#7 230.7 Downloading ruamel_yaml-0.19.1-py3-none-any.whl (118 kB)
+#7 231.1    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 118.1/118.1 kB 599.1 kB/s eta 0:00:00
+#7 231.4 Downloading ruamel_yaml_clib-0.2.15-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (788 kB)
+#7 233.3    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 788.2/788.2 kB 449.2 kB/s eta 0:00:00
+#7 233.7 Downloading semver-3.0.4-py3-none-any.whl (17 kB)
+#7 233.8 Downloading sniffio-1.3.1-py3-none-any.whl (10 kB)
+#7 234.0 Downloading sqlalchemy-2.0.49-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (3.4 MB)
+#7 239.4    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.4/3.4 MB 634.9 kB/s eta 0:00:00
+#7 239.6 Downloading toml-0.10.2-py2.py3-none-any.whl (16 kB)
+#7 241.7 Downloading typing_extensions-4.15.0-py3-none-any.whl (44 kB)
+#7 242.3    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 44.6/44.6 kB 147.1 kB/s eta 0:00:00
+#7 242.4 Downloading uvicorn-0.46.0-py3-none-any.whl (70 kB)
+#7 243.3    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 70.9/70.9 kB 127.1 kB/s eta 0:00:00
+#7 243.4 Downloading websockets-16.0-cp312-cp312-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (184 kB)
+#7 244.2    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 184.9/184.9 kB 402.7 kB/s eta 0:00:00
+#7 244.4 Downloading annotated_doc-0.0.4-py3-none-any.whl (5.3 kB)
+#7 244.6 Downloading annotated_types-0.7.0-py3-none-any.whl (13 kB)
+#7 247.2 Downloading attrs-26.1.0-py3-none-any.whl (67 kB)
+#7 247.5    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 67.5/67.5 kB 229.4 kB/s eta 0:00:00
+#7 247.6 Downloading burner_redis-0.1.7-cp310-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (1.4 MB)
+#7 250.7    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.4/1.4 MB 466.2 kB/s eta 0:00:00
+#7 250.9 Downloading cffi-2.0.0-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (219 kB)
+#7 251.6    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 219.6/219.6 kB 306.9 kB/s eta 0:00:00
+#7 251.7 Downloading cronsim-2.7-py3-none-any.whl (14 kB)
+#7 252.1 Downloading docstring_parser-0.18.0-py3-none-any.whl (22 kB)
+#7 252.6 Downloading greenlet-3.5.0-cp312-cp312-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl (611 kB)
+#7 254.2    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 611.4/611.4 kB 412.8 kB/s eta 0:00:00
+#7 254.4 Downloading h11-0.16.0-py3-none-any.whl (37 kB)
+#7 254.7 Downloading h2-4.3.0-py3-none-any.whl (61 kB)
+#7 255.1    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 61.8/61.8 kB 435.5 kB/s eta 0:00:00
+#7 255.2 Downloading idna-3.15-py3-none-any.whl (72 kB)
+#7 255.5    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 72.3/72.3 kB 582.6 kB/s eta 0:00:00
+#7 255.6 Downloading importlib_metadata-8.7.1-py3-none-any.whl (27 kB)
+#7 256.0 Downloading jsonpointer-3.1.1-py3-none-any.whl (7.7 kB)
+#7 256.2 Downloading jsonschema_specifications-2025.9.1-py3-none-any.whl (18 kB)
+#7 256.7 Downloading markdown_it_py-4.2.0-py3-none-any.whl (91 kB)
+#7 257.7    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 91.7/91.7 kB 141.5 kB/s eta 0:00:00
+#7 257.8 Downloading markupsafe-3.0.3-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (22 kB)
+#7 258.1 Downloading py_key_value_aio-0.4.4-py3-none-any.whl (152 kB)
+#7 258.8    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 152.3/152.3 kB 286.1 kB/s eta 0:00:00
+#7 259.0 Downloading pygments-2.20.0-py3-none-any.whl (1.2 MB)
+#7 264.0    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.2/1.2 MB 252.7 kB/s eta 0:00:00
+#7 264.1 Downloading python_dotenv-1.2.2-py3-none-any.whl (22 kB)
+#7 264.5 Downloading python_json_logger-4.1.0-py3-none-any.whl (15 kB)
+#7 265.3 Downloading redis-7.4.0-py3-none-any.whl (409 kB)
+#7 266.8    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 409.8/409.8 kB 319.4 kB/s eta 0:00:00
+#7 266.9 Downloading referencing-0.37.0-py3-none-any.whl (26 kB)
+#7 267.5 Downloading regex-2026.5.9-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (801 kB)
+#7 270.2    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 801.2/801.2 kB 336.9 kB/s eta 0:00:00
+#7 270.4 Downloading requests-2.34.1-py3-none-any.whl (73 kB)
+#7 270.8    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 73.1/73.1 kB 225.5 kB/s eta 0:00:00
+#7 271.2 Downloading certifi-2026.4.22-py3-none-any.whl (135 kB)
+#7 271.6    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 135.7/135.7 kB 440.2 kB/s eta 0:00:00
+#7 271.8 Downloading rich_rst-1.3.2-py3-none-any.whl (12 kB)
+#7 272.1 Downloading rpds_py-0.30.0-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (394 kB)
+#7 273.3    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 394.1/394.1 kB 481.6 kB/s eta 0:00:00
+#7 273.5 Downloading six-1.17.0-py2.py3-none-any.whl (11 kB)
+#7 274.1 Downloading starlette-1.0.0-py3-none-any.whl (72 kB)
+#7 274.3    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 72.7/72.7 kB 454.2 kB/s eta 0:00:00
+#7 274.4 Downloading text_unidecode-1.3-py2.py3-none-any.whl (78 kB)
+#7 274.9    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 78.2/78.2 kB 439.0 kB/s eta 0:00:00
+#7 275.1 Downloading typer-0.25.1-py3-none-any.whl (58 kB)
+#7 275.4    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 58.4/58.4 kB 428.9 kB/s eta 0:00:00
+#7 275.5 Downloading typing_inspection-0.4.2-py3-none-any.whl (14 kB)
+#7 276.4 Downloading tzdata-2026.2-py2.py3-none-any.whl (349 kB)
+#7 277.5    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 349.3/349.3 kB 316.1 kB/s eta 0:00:00
+#7 277.6 Downloading tzlocal-5.3.1-py3-none-any.whl (18 kB)
+#7 278.4 Downloading uncalled_for-0.3.2-py3-none-any.whl (11 kB)
+#7 278.5 Downloading urllib3-2.7.0-py3-none-any.whl (131 kB)
+#7 279.0    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 131.1/131.1 kB 462.7 kB/s eta 0:00:00
+#7 279.4 Downloading mako-1.3.12-py3-none-any.whl (78 kB)
+#7 279.8    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 78.5/78.5 kB 163.6 kB/s eta 0:00:00
+#7 279.9 Downloading markdown-3.10.2-py3-none-any.whl (108 kB)
+#7 280.4    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 108.2/108.2 kB 398.9 kB/s eta 0:00:00
+#7 280.5 Downloading requests_oauthlib-2.0.0-py2.py3-none-any.whl (24 kB)
+#7 281.2 Downloading beartype-0.22.9-py3-none-any.whl (1.3 MB)
+#7 284.5    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.3/1.3 MB 401.1 kB/s eta 0:00:00
+#7 284.7 Downloading charset_normalizer-3.4.7-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (216 kB)
+#7 285.7    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 216.6/216.6 kB 269.4 kB/s eta 0:00:00
+#7 286.0 Downloading colorama-0.4.6-py2.py3-none-any.whl (25 kB)
+#7 286.4 Downloading hpack-4.1.0-py3-none-any.whl (34 kB)
+#7 286.8 Downloading hyperframe-6.1.0-py3-none-any.whl (13 kB)
+#7 287.1 Downloading mdurl-0.1.2-py3-none-any.whl (10.0 kB)
+#7 288.0 Downloading oauthlib-3.3.1-py3-none-any.whl (160 kB)
+#7 289.3    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 160.1/160.1 kB 118.2 kB/s eta 0:00:00
+#7 289.5 Downloading shellingham-1.5.4-py2.py3-none-any.whl (9.8 kB)
+#7 289.8 Downloading zipp-3.23.1-py3-none-any.whl (10 kB)
+#7 290.3 Downloading docutils-0.22.4-py3-none-any.whl (633 kB)
+#7 294.5    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 633.2/633.2 kB 152.8 kB/s eta 0:00:00
+#7 294.7 Downloading pycparser-3.0-py3-none-any.whl (48 kB)
+#7 295.1    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 48.2/48.2 kB 121.4 kB/s eta 0:00:00
+#7 296.1 Installing collected packages: text-unidecode, pytz, zipp, websockets, urllib3, uncalled-for, tzlocal, tzdata, typing-extensions, toml, sniffio, six, shellingham, semver, ruamel-yaml-clib, ruamel-yaml, rpds-py, regex, redis, readchar, pyyaml, python-slugify, python-json-logger, python-dotenv, pygments, pycparser, prometheus-client, pluggy, pathspec, orjson, oauthlib, mdurl, MarkupSafe, markdown, jsonpointer, idna, hyperframe, humanize, hpack, h11, griffelib, greenlet, graphviz, fsspec, docutils, docstring-parser, cronsim, coolname, colorama, cloudpickle, click, charset_normalizer, certifi, cachetools, burner-redis, beartype, attrs, asyncpg, annotated-types, annotated-doc, amplitude-analytics, aiosqlite, uvicorn, typing-inspection, sqlalchemy, rfc3339-validator, requests, referencing, python-dateutil, pydantic-core, py-key-value-aio, markdown-it-py, Mako, jsonpatch, jinja2, importlib-metadata, httpcore, h2, griffecli, exceptiongroup, cffi, asgi-lifespan, anyio, starlette, rich, requests-oauthlib, pydantic, pendulum, opentelemetry-api, jsonschema-specifications, jinja2-humanize-extension, httpx, griffe, docker, dateparser, cryptography, alembic, typer, rich-rst, python-on-whales, pydantic-settings, pydantic-extra-types, jsonschema, fastapi, apprise, pydocket, cyclopts, prefect, prefect-docker
+#7 298.5   Attempting uninstall: pluggy
+#7 298.5     Found existing installation: pluggy 1.4.0
+#7 298.5 ERROR: Cannot uninstall pluggy 1.4.0, RECORD file not found. Hint: The package was installed by debian.
+#7 ERROR: process "/bin/sh -c pip3 install --break-system-packages prefect prefect-docker pluggy" did not complete successfully: exit code: 1
+------
+ > [3/4] RUN pip3 install --break-system-packages prefect prefect-docker pluggy:
+289.5 Downloading shellingham-1.5.4-py2.py3-none-any.whl (9.8 kB)
+289.8 Downloading zipp-3.23.1-py3-none-any.whl (10 kB)
+290.3 Downloading docutils-0.22.4-py3-none-any.whl (633 kB)
+
+294.7 Downloading pycparser-3.0-py3-none-any.whl (48 kB)
+
+296.1 Installing collected packages: text-unidecode, pytz, zipp, websockets, urllib3, uncalled-for, tzlocal, tzdata, typing-extensions, toml, sniffio, six, shellingham, semver, ruamel-yaml-clib, ruamel-yaml, rpds-py, regex, redis, readchar, pyyaml, python-slugify, python-json-logger, python-dotenv, pygments, pycparser, prometheus-client, pluggy, pathspec, orjson, oauthlib, mdurl, MarkupSafe, markdown, jsonpointer, idna, hyperframe, humanize, hpack, h11, griffelib, greenlet, graphviz, fsspec, docutils, docstring-parser, cronsim, coolname, colorama, cloudpickle, click, charset_normalizer, certifi, cachetools, burner-redis, beartype, attrs, asyncpg, annotated-types, annotated-doc, amplitude-analytics, aiosqlite, uvicorn, typing-inspection, sqlalchemy, rfc3339-validator, requests, referencing, python-dateutil, pydantic-core, py-key-value-aio, markdown-it-py, Mako, jsonpatch, jinja2, importlib-metadata, httpcore, h2, griffecli, exceptiongroup, cffi, asgi-lifespan, anyio, starlette, rich, requests-oauthlib, pydantic, pendulum, opentelemetry-api, jsonschema-specifications, jinja2-humanize-extension, httpx, griffe, docker, dateparser, cryptography, alembic, typer, rich-rst, python-on-whales, pydantic-settings, pydantic-extra-types, jsonschema, fastapi, apprise, pydocket, cyclopts, prefect, prefect-docker
+298.5   Attempting uninstall: pluggy
+298.5     Found existing installation: pluggy 1.4.0
+298.5 ERROR: Cannot uninstall pluggy 1.4.0, RECORD file not found. Hint: The package was installed by debian.
+------
+Dockerfile:9
+
+--------------------
+
+   7 |         rm -rf /var/lib/apt/lists/*
+
+   8 |     
+
+   9 | >>> RUN pip3 install --break-system-packages prefect prefect-docker pluggy
+
+  10 |     
+
+  11 |     RUN mkdir -p /home/user && chmod 0755 /home/user
+
+--------------------
+
+failed to solve: process "/bin/sh -c pip3 install --break-system-packages prefect prefect-docker pluggy" did not complete successfully: exit code: 1
+
+. Stderr: None. 
+Failed to download artifact '/home/user' (best-effort)
+Not retrying trial because the maximum number of retries has been reached
+Running command: apt-get update && apt-get install -y curl ripgrep
+Command outputs captured
+Running command: ln -sf ~/.pochi/bin/pochi /usr/local/bin/pochi
+Command outputs captured
+Running command: echo serializable_transaction_file_lo__bJ27rKm > /logs/artifacts/trial_id
+Command outputs captured
+Running command: mkdir -p ~/.pochi && cat << 'EOF' | sed -e "s/OPENAI_API_KEY/${OPENAI_API_KEY}/g" -e "s/DEEPINFRA_API_KEY/${DEEPINFRA_API_KEY}/g" -e "s/ANTHROPIC_API_KEY/${ANTHROPIC_API_KEY}/g" > ~/.pochi/config.jsonc
+{
+  "providers": {
+    "deepinfra": {
+      "kind": "openai",
+      "baseURL": "https://api.deepinfra.com/v1/openai",
+      "apiKey": "DEEPINFRA_API_KEY",
+      "models": {
+        "zai-org/GLM-4.7-Flash": {
+          "name": "glm-4.7-flash"
+        },
+        "moonshotai/Kimi-K2.6": {
+          "name": "kimi-K2.6"
+        },
+        "deepseek-ai/DeepSeek-V4-Pro": {
+          "name": "DeepSeek-V4-Pro"
+        }
+      }
+    },
+    "anthropic": {
+      "kind": "openai",
+      "baseURL": "https://api.anthropic.com/v1",
+      "apiKey": "ANTHROPIC_API_KEY",
+      "models": {
+        "claude-opus-4-6": {
+          "name": "claude-opus-4-6"
+        }
+      }
+    },
+    "openai": {
+      "kind": "openai",
+      "baseURL": "https://api.openai.com/v1",
+      "apiKey": "OPENAI_API_KEY",
+      "models": {
+        "gpt-5.4": {
+          "name": "gpt-5.4"
+        }
+      }
+    }
+  }
+}
+EOF
+Command outputs captured
+Running command: mkdir -p /logs/artifacts
+Command outputs captured
+Running command: export PATH="$HOME/.pochi/bin:$PATH"; pochi --model zai/glm-4.7 --max-steps 200 --max-retries 10 --blobs-dir /logs/agent/pochi/blobs --experimental-stream-trajectory /logs/agent/pochi/trajectory.jsonl > >(tee /logs/agent/pochi/stdout.txt) 2> >(tee /logs/agent/pochi/stderr.txt >&2) <<'EOF'
+# Prefect Serializable Transaction File Lock
+
+## Background
+Prefect 3.0 introduced transactional semantics for atomic units of work. In this task, you will implement a flow that uses a `SERIALIZABLE` transaction with a `FileSystemLockManager` to prevent race conditions when multiple concurrent runs of the flow attempt to access or modify the same local resource.
+
+## Requirements
+- Create a Prefect flow named `concurrent_file_modifier` in a script named `flow.py`.
+- The flow must use a `SERIALIZABLE` transaction.
+- The transaction must use a `FileSystemLockManager` to lock a specific file during the transaction to prevent race conditions.
+- The flow should read an integer from a file, increment it, and write it back.
+- Write a script named `run_concurrent.py` that executes multiple instances of this flow concurrently (e.g., using `asyncio.gather` or multiple subprocesses) to demonstrate that the lock works and no updates are lost.
+
+## Constraints
+- Project path: `/home/user/prefect-project`
+- Lock directory/path for FileSystemLockManager: `/home/user/prefect-project/locks`
+- Data file path: `/home/user/prefect-project/counter.txt`
+- The initial value in `counter.txt` will be 0.
+- Running `python run_concurrent.py` should execute the flow concurrently 5 times.
+- After running 5 concurrent flows, the value in `counter.txt` must be exactly 5.
+EOF
+Command outputs captured
+Running command: set -euo pipefail; curl -fsSL https://getpochi.com/install.sh | bash  && mkdir -p /logs/agent/pochi && ~/.pochi/bin/pochi --version
+Command outputs captured
+Running command: ln -sf ~/.pochi/bin/pochi /usr/local/bin/pochi
+Command outputs captured
+Running command: echo state_change_hooks_notifications__NGTCab5 > /logs/artifacts/trial_id
+Command outputs captured
+Running command: mkdir -p ~/.pochi && cat << 'EOF' | sed -e "s/OPENAI_API_KEY/${OPENAI_API_KEY}/g" -e "s/DEEPINFRA_API_KEY/${DEEPINFRA_API_KEY}/g" -e "s/ANTHROPIC_API_KEY/${ANTHROPIC_API_KEY}/g" > ~/.pochi/config.jsonc
+{
+  "providers": {
+    "deepinfra": {
+      "kind": "openai",
+      "baseURL": "https://api.deepinfra.com/v1/openai",
+      "apiKey": "DEEPINFRA_API_KEY",
+      "models": {
+        "zai-org/GLM-4.7-Flash": {
+          "name": "glm-4.7-flash"
+        },
+        "moonshotai/Kimi-K2.6": {
+          "name": "kimi-K2.6"
+        },
+        "deepseek-ai/DeepSeek-V4-Pro": {
+          "name": "DeepSeek-V4-Pro"
+        }
+      }
+    },
+    "anthropic": {
+      "kind": "openai",
+      "baseURL": "https://api.anthropic.com/v1",
+      "apiKey": "ANTHROPIC_API_KEY",
+      "models": {
+        "claude-opus-4-6": {
+          "name": "claude-opus-4-6"
+        }
+      }
+    },
+    "openai": {
+      "kind": "openai",
+      "baseURL": "https://api.openai.com/v1",
+      "apiKey": "OPENAI_API_KEY",
+      "models": {
+        "gpt-5.4": {
+          "name": "gpt-5.4"
+        }
+      }
+    }
+  }
+}
+EOF
+Command outputs captured
+Running command: mkdir -p /logs/artifacts
+Command outputs captured
+Running command: export PATH="$HOME/.pochi/bin:$PATH"; pochi --model zai/glm-4.7 --max-steps 200 --max-retries 10 --blobs-dir /logs/agent/pochi/blobs --experimental-stream-trajectory /logs/agent/pochi/trajectory.jsonl > >(tee /logs/agent/pochi/stdout.txt) 2> >(tee /logs/agent/pochi/stderr.txt >&2) <<'EOF'
+# Prefect State Change Hooks & Notifications
+
+## Background
+Prefect allows you to trigger actions based on state changes of flows and tasks using state change hooks. This is useful for sending notifications, cleaning up resources, or triggering external systems when a workflow succeeds, fails, or crashes.
+
+## Requirements
+- You have an empty project directory at `/home/user/project`.
+- Create a Prefect workflow that uses state change hooks for success and failure notifications.
+- The workflow should be defined in `/home/user/project/flow.py`.
+- Define two hook functions:
+  - `notify_success(flow, flow_run, state)`: Writes the string "Workflow succeeded" to `/home/user/project/success.log`.
+  - `notify_failure(flow, flow_run, state)`: Writes the string "Workflow failed" to `/home/user/project/failure.log`.
+- Define a flow named `data_pipeline` that accepts a boolean parameter `should_fail`.
+- Attach the `notify_success` hook to the flow's `on_completion` event.
+- Attach the `notify_failure` hook to the flow's `on_failure` event.
+- Inside the flow, if `should_fail` is `True`, raise a `ValueError("Simulated failure")`. Otherwise, return `"Success"`.
+- Add a block at the bottom of the file to run the flow twice:
+  - First run: `data_pipeline(should_fail=False, return_state=True)`
+  - Second run: `data_pipeline(should_fail=True, return_state=True)`
+- Run the script to generate the log files.
+
+## Implementation Guide
+1. Create `/home/user/project/flow.py` and import the necessary Prefect modules.
+2. Implement the hook functions to write to the specified log files.
+3. Implement the `data_pipeline` flow with the `@flow` decorator, attaching the hooks.
+4. Execute the flow twice at the end of the script, handling the return states to ensure both runs complete.
+5. Run `python3 /home/user/project/flow.py` to produce the logs.
+
+## Constraints
+- Project path: /home/user/project
+- Log file: /home/user/project/success.log, /home/user/project/failure.log
+EOF
+Command outputs captured
+Running command: rm -f ~/.pochi/config.jsonc
+Command outputs captured
+The verifier.env contains an API key (often the case for LLM-based verifiers). You will incur costs associated with the API calls.
+Running command: apt-get update && apt-get install -y curl ripgrep
+Command outputs captured
+Running command: set -euo pipefail; curl -fsSL https://getpochi.com/install.sh | bash  && mkdir -p /logs/agent/pochi && ~/.pochi/bin/pochi --version
+Command outputs captured
+Running command: ln -sf ~/.pochi/bin/pochi /usr/local/bin/pochi
+Command outputs captured
+Running command: echo subflows_and_parameter_passing__yE8cq5k > /logs/artifacts/trial_id
+Command outputs captured
+Running command: mkdir -p ~/.pochi && cat << 'EOF' | sed -e "s/OPENAI_API_KEY/${OPENAI_API_KEY}/g" -e "s/DEEPINFRA_API_KEY/${DEEPINFRA_API_KEY}/g" -e "s/ANTHROPIC_API_KEY/${ANTHROPIC_API_KEY}/g" > ~/.pochi/config.jsonc
+{
+  "providers": {
+    "deepinfra": {
+      "kind": "openai",
+      "baseURL": "https://api.deepinfra.com/v1/openai",
+      "apiKey": "DEEPINFRA_API_KEY",
+      "models": {
+        "zai-org/GLM-4.7-Flash": {
+          "name": "glm-4.7-flash"
+        },
+        "moonshotai/Kimi-K2.6": {
+          "name": "kimi-K2.6"
+        },
+        "deepseek-ai/DeepSeek-V4-Pro": {
+          "name": "DeepSeek-V4-Pro"
+        }
+      }
+    },
+    "anthropic": {
+      "kind": "openai",
+      "baseURL": "https://api.anthropic.com/v1",
+      "apiKey": "ANTHROPIC_API_KEY",
+      "models": {
+        "claude-opus-4-6": {
+          "name": "claude-opus-4-6"
+        }
+      }
+    },
+    "openai": {
+      "kind": "openai",
+      "baseURL": "https://api.openai.com/v1",
+      "apiKey": "OPENAI_API_KEY",
+      "models": {
+        "gpt-5.4": {
+          "name": "gpt-5.4"
+        }
+      }
+    }
+  }
+}
+EOF
+Command outputs captured
+Running command: mkdir -p /logs/artifacts
+Command outputs captured
+Running command: export PATH="$HOME/.pochi/bin:$PATH"; pochi --model zai/glm-4.7 --max-steps 200 --max-retries 10 --blobs-dir /logs/agent/pochi/blobs --experimental-stream-trajectory /logs/agent/pochi/trajectory.jsonl > >(tee /logs/agent/pochi/stdout.txt) 2> >(tee /logs/agent/pochi/stderr.txt >&2) <<'EOF'
+# Prefect Subflows and Parameter Passing
+
+## Background
+Prefect allows you to compose complex workflows by calling flows from within other flows, known as subflows. This task involves creating a parent flow that accepts parameters and passes them down to multiple subflows to process data.
+
+## Requirements
+- Create a Python script `main.py` in `/home/user/project`.
+- Define a subflow named `process_item` that takes a string parameter `item` and a boolean `uppercase`, and returns the processed string (uppercased if True, else lowercased).
+- Define a parent flow named `main_flow` that takes a list of strings and a boolean `uppercase` flag.
+- The parent flow must iterate over the list and call the `process_item` subflow for each item, passing the `uppercase` flag.
+- The parent flow should return the list of processed strings.
+- Add a block of code at the bottom of `main.py` to execute `main_flow` with the arguments `items=["apple", "Banana", "cherry"]` and `uppercase=True`, and print the result to a log file `/home/user/project/output.log`.
+
+## Constraints
+- Project path: `/home/user/project`
+- Log file: `/home/user/project/output.log`
+- Must use Prefect `@flow` decorators for both the parent flow and the subflow.
+- Do not use `@task` for this specific exercise, only subflows.
+- The script must be executable via `python main.py`.
+EOF
+Command outputs captured
+Running command: rm -f ~/.pochi/config.jsonc
+Command outputs captured
+The verifier.env contains an API key (often the case for LLM-based verifiers). You will incur costs associated with the API calls.
+Command outputs captured
+Running command: rm -f ~/.pochi/config.jsonc
+Command outputs captured
+The verifier.env contains an API key (often the case for LLM-based verifiers). You will incur costs associated with the API calls.
+Running command: apt-get update && apt-get install -y curl ripgrep
+Command outputs captured
+Running command: rm -f ~/.pochi/config.jsonc
+Command outputs captured
+The verifier.env contains an API key (often the case for LLM-based verifiers). You will incur costs associated with the API calls.
+Command outputs captured
+Running command: set -euo pipefail; curl -fsSL https://getpochi.com/install.sh | bash  && mkdir -p /logs/agent/pochi && ~/.pochi/bin/pochi --version
+Command outputs captured
+Running command: ln -sf ~/.pochi/bin/pochi /usr/local/bin/pochi
+Command outputs captured
+Running command: echo suspending_and_resuming_flows__zkgotrC > /logs/artifacts/trial_id
+Command outputs captured
+Running command: mkdir -p ~/.pochi && cat << 'EOF' | sed -e "s/OPENAI_API_KEY/${OPENAI_API_KEY}/g" -e "s/DEEPINFRA_API_KEY/${DEEPINFRA_API_KEY}/g" -e "s/ANTHROPIC_API_KEY/${ANTHROPIC_API_KEY}/g" > ~/.pochi/config.jsonc
+{
+  "providers": {
+    "deepinfra": {
+      "kind": "openai",
+      "baseURL": "https://api.deepinfra.com/v1/openai",
+      "apiKey": "DEEPINFRA_API_KEY",
+      "models": {
+        "zai-org/GLM-4.7-Flash": {
+          "name": "glm-4.7-flash"
+        },
+        "moonshotai/Kimi-K2.6": {
+          "name": "kimi-K2.6"
+        },
+        "deepseek-ai/DeepSeek-V4-Pro": {
+          "name": "DeepSeek-V4-Pro"
+        }
+      }
+    },
+    "anthropic": {
+      "kind": "openai",
+      "baseURL": "https://api.anthropic.com/v1",
+      "apiKey": "ANTHROPIC_API_KEY",
+      "models": {
+        "claude-opus-4-6": {
+          "name": "claude-opus-4-6"
+        }
+      }
+    },
+    "openai": {
+      "kind": "openai",
+      "baseURL": "https://api.openai.com/v1",
+      "apiKey": "OPENAI_API_KEY",
+      "models": {
+        "gpt-5.4": {
+          "name": "gpt-5.4"
+        }
+      }
+    }
+  }
+}
+EOF
+Command outputs captured
+Running command: mkdir -p /logs/artifacts
+Command outputs captured
+Running command: export PATH="$HOME/.pochi/bin:$PATH"; pochi --model zai/glm-4.7 --max-steps 200 --max-retries 10 --blobs-dir /logs/agent/pochi/blobs --experimental-stream-trajectory /logs/agent/pochi/trajectory.jsonl > >(tee /logs/agent/pochi/stdout.txt) 2> >(tee /logs/agent/pochi/stderr.txt >&2) <<'EOF'
+# Suspending and Resuming Flows
+
+## Background
+Prefect allows you to pause a flow run, blocking its execution until it is manually resumed. This is useful for workflows that require human approval or intervention before proceeding to subsequent tasks.
+
+## Requirements
+- Create a Prefect flow named `my_pausing_flow` in `/home/user/app/flow.py`.
+- The flow must contain two tasks: `task_one` and `task_two`.
+- `task_one` should print the exact string `"Task 1 complete"`.
+- `task_two` should print the exact string `"Task 2 complete"`.
+- The flow must call `task_one`, then pause itself using `pause_flow_run` with a timeout of 3600 seconds, and finally call `task_two`.
+- The script must execute the flow when run directly (e.g., using `if __name__ == "__main__":`).
+
+## Implementation Guide
+1. Ensure you are working in `/home/user/app`.
+2. Write the `flow.py` script using `@flow`, `@task`, and `pause_flow_run` from `prefect.flow_runs`.
+3. Do not use `suspend_flow_run`, as it requires additional deployment configurations. Use `pause_flow_run`.
+
+## Constraints
+- Project path: `/home/user/app`
+- The flow must be named `my_pausing_flow`.
+EOF
+Running command: apt-get update && apt-get install -y curl ripgrep
+Command outputs captured
+Running command: set -euo pipefail; curl -fsSL https://getpochi.com/install.sh | bash  && mkdir -p /logs/agent/pochi && ~/.pochi/bin/pochi --version
+Command outputs captured
+Running command: ln -sf ~/.pochi/bin/pochi /usr/local/bin/pochi
+Command outputs captured
+Running command: echo task_caching_and_cache_key_fn__i8jXdZj > /logs/artifacts/trial_id
+Command outputs captured
+Running command: mkdir -p ~/.pochi && cat << 'EOF' | sed -e "s/OPENAI_API_KEY/${OPENAI_API_KEY}/g" -e "s/DEEPINFRA_API_KEY/${DEEPINFRA_API_KEY}/g" -e "s/ANTHROPIC_API_KEY/${ANTHROPIC_API_KEY}/g" > ~/.pochi/config.jsonc
+{
+  "providers": {
+    "deepinfra": {
+      "kind": "openai",
+      "baseURL": "https://api.deepinfra.com/v1/openai",
+      "apiKey": "DEEPINFRA_API_KEY",
+      "models": {
+        "zai-org/GLM-4.7-Flash": {
+          "name": "glm-4.7-flash"
+        },
+        "moonshotai/Kimi-K2.6": {
+          "name": "kimi-K2.6"
+        },
+        "deepseek-ai/DeepSeek-V4-Pro": {
+          "name": "DeepSeek-V4-Pro"
+        }
+      }
+    },
+    "anthropic": {
+      "kind": "openai",
+      "baseURL": "https://api.anthropic.com/v1",
+      "apiKey": "ANTHROPIC_API_KEY",
+      "models": {
+        "claude-opus-4-6": {
+          "name": "claude-opus-4-6"
+        }
+      }
+    },
+    "openai": {
+      "kind": "openai",
+      "baseURL": "https://api.openai.com/v1",
+      "apiKey": "OPENAI_API_KEY",
+      "models": {
+        "gpt-5.4": {
+          "name": "gpt-5.4"
+        }
+      }
+    }
+  }
+}
+EOF
+Command outputs captured
+Running command: mkdir -p /logs/artifacts
+Command outputs captured
+Running command: export PATH="$HOME/.pochi/bin:$PATH"; pochi --model zai/glm-4.7 --max-steps 200 --max-retries 10 --blobs-dir /logs/agent/pochi/blobs --experimental-stream-trajectory /logs/agent/pochi/trajectory.jsonl > >(tee /logs/agent/pochi/stdout.txt) 2> >(tee /logs/agent/pochi/stderr.txt >&2) <<'EOF'
+# Prefect Task Caching
+
+## Background
+Prefect provides caching to prevent re-execution of expensive tasks. You can use `cache_key_fn` to define custom caching logic.
+
+## Requirements
+- Create a Python script `/home/user/project/flow.py`.
+- Define a Prefect task named `fetch_data(url: str)` that takes a string URL as input and returns the string `"Data from " + url`.
+- The `fetch_data` task must use `cache_key_fn` to cache its output based on the `url` argument. The cache key function should accept `context` and `parameters` and return the string `"fetch-" + parameters["url"]`.
+- Define a Prefect flow named `process_data()` that calls `fetch_data("http://example.com")` twice.
+- The flow should print the result of both calls.
+- The script must execute the `process_data()` flow when run directly.
+
+## Implementation Guide
+1. Ensure you are working in `/home/user/project`.
+2. Write the script `flow.py` with the required task and flow.
+3. Run the script using `python3 flow.py` to verify it works.
+
+## Constraints
+- Project path: /home/user/project
+- The script must use Prefect 3.0 syntax (e.g., `@task`, `@flow`).
+EOF
+Command outputs captured
+Running command: rm -f ~/.pochi/config.jsonc
+Command outputs captured
+The verifier.env contains an API key (often the case for LLM-based verifiers). You will incur costs associated with the API calls.
+Running command: apt-get update && apt-get install -y curl ripgrep
+Command outputs captured
+Running command: rm -f ~/.pochi/config.jsonc
+Command outputs captured
+The verifier.env contains an API key (often the case for LLM-based verifiers). You will incur costs associated with the API calls.
+Command outputs captured
+Running command: set -euo pipefail; curl -fsSL https://getpochi.com/install.sh | bash  && mkdir -p /logs/agent/pochi && ~/.pochi/bin/pochi --version
+Command outputs captured
+Running command: ln -sf ~/.pochi/bin/pochi /usr/local/bin/pochi
+Command outputs captured
+Running command: echo task_run_concurrency_limits__QtY7SqS > /logs/artifacts/trial_id
+Command outputs captured
+Running command: mkdir -p ~/.pochi && cat << 'EOF' | sed -e "s/OPENAI_API_KEY/${OPENAI_API_KEY}/g" -e "s/DEEPINFRA_API_KEY/${DEEPINFRA_API_KEY}/g" -e "s/ANTHROPIC_API_KEY/${ANTHROPIC_API_KEY}/g" > ~/.pochi/config.jsonc
+{
+  "providers": {
+    "deepinfra": {
+      "kind": "openai",
+      "baseURL": "https://api.deepinfra.com/v1/openai",
+      "apiKey": "DEEPINFRA_API_KEY",
+      "models": {
+        "zai-org/GLM-4.7-Flash": {
+          "name": "glm-4.7-flash"
+        },
+        "moonshotai/Kimi-K2.6": {
+          "name": "kimi-K2.6"
+        },
+        "deepseek-ai/DeepSeek-V4-Pro": {
+          "name": "DeepSeek-V4-Pro"
+        }
+      }
+    },
+    "anthropic": {
+      "kind": "openai",
+      "baseURL": "https://api.anthropic.com/v1",
+      "apiKey": "ANTHROPIC_API_KEY",
+      "models": {
+        "claude-opus-4-6": {
+          "name": "claude-opus-4-6"
+        }
+      }
+    },
+    "openai": {
+      "kind": "openai",
+      "baseURL": "https://api.openai.com/v1",
+      "apiKey": "OPENAI_API_KEY",
+      "models": {
+        "gpt-5.4": {
+          "name": "gpt-5.4"
+        }
+      }
+    }
+  }
+}
+EOF
+Command outputs captured
+Running command: mkdir -p /logs/artifacts
+Command outputs captured
+Running command: export PATH="$HOME/.pochi/bin:$PATH"; pochi --model zai/glm-4.7 --max-steps 200 --max-retries 10 --blobs-dir /logs/agent/pochi/blobs --experimental-stream-trajectory /logs/agent/pochi/trajectory.jsonl > >(tee /logs/agent/pochi/stdout.txt) 2> >(tee /logs/agent/pochi/stderr.txt >&2) <<'EOF'
+# Task Run Concurrency Limits
+
+## Background
+You have a Prefect project that processes large amounts of data. The `process_data` task is resource-intensive and should not run too many instances concurrently to avoid memory issues.
+
+## Requirements
+- Set a task run concurrency limit of `2` for the tag `heavy-processing` using the Prefect CLI.
+- Modify `/home/user/project/flow.py` to apply the `heavy-processing` tag to the `process_data` task.
+
+## Constraints
+- Project path: /home/user/project
+- Do not change the logic inside the tasks or flows.
+- Ensure you are using the tag-based concurrency limits.
+EOF
+Command outputs captured
+Running command: rm -f ~/.pochi/config.jsonc
+Command outputs captured
+The verifier.env contains an API key (often the case for LLM-based verifiers). You will incur costs associated with the API calls.
+Running command: apt-get update && apt-get install -y curl ripgrep
+Command outputs captured
+Running command: set -euo pipefail; curl -fsSL https://getpochi.com/install.sh | bash  && mkdir -p /logs/agent/pochi && ~/.pochi/bin/pochi --version
+Command outputs captured
+Running command: ln -sf ~/.pochi/bin/pochi /usr/local/bin/pochi
+Command outputs captured
+Running command: echo worker_process_configuration__8ahjkvc > /logs/artifacts/trial_id
+Command outputs captured
+Running command: mkdir -p ~/.pochi && cat << 'EOF' | sed -e "s/OPENAI_API_KEY/${OPENAI_API_KEY}/g" -e "s/DEEPINFRA_API_KEY/${DEEPINFRA_API_KEY}/g" -e "s/ANTHROPIC_API_KEY/${ANTHROPIC_API_KEY}/g" > ~/.pochi/config.jsonc
+{
+  "providers": {
+    "deepinfra": {
+      "kind": "openai",
+      "baseURL": "https://api.deepinfra.com/v1/openai",
+      "apiKey": "DEEPINFRA_API_KEY",
+      "models": {
+        "zai-org/GLM-4.7-Flash": {
+          "name": "glm-4.7-flash"
+        },
+        "moonshotai/Kimi-K2.6": {
+          "name": "kimi-K2.6"
+        },
+        "deepseek-ai/DeepSeek-V4-Pro": {
+          "name": "DeepSeek-V4-Pro"
+        }
+      }
+    },
+    "anthropic": {
+      "kind": "openai",
+      "baseURL": "https://api.anthropic.com/v1",
+      "apiKey": "ANTHROPIC_API_KEY",
+      "models": {
+        "claude-opus-4-6": {
+          "name": "claude-opus-4-6"
+        }
+      }
+    },
+    "openai": {
+      "kind": "openai",
+      "baseURL": "https://api.openai.com/v1",
+      "apiKey": "OPENAI_API_KEY",
+      "models": {
+        "gpt-5.4": {
+          "name": "gpt-5.4"
+        }
+      }
+    }
+  }
+}
+EOF
+Command outputs captured
+Running command: mkdir -p /logs/artifacts
+Command outputs captured
+Running command: export PATH="$HOME/.pochi/bin:$PATH"; pochi --model zai/glm-4.7 --max-steps 200 --max-retries 10 --blobs-dir /logs/agent/pochi/blobs --experimental-stream-trajectory /logs/agent/pochi/trajectory.jsonl > >(tee /logs/agent/pochi/stdout.txt) 2> >(tee /logs/agent/pochi/stderr.txt >&2) <<'EOF'
+# Configure Prefect Worker Process Deployment
+
+## Background
+You have a Prefect project at `/home/user/myproject`. There is a flow defined in `flows/data_pipeline.py` with the function `my_flow`. To execute this flow using a worker, you need to configure a deployment using `prefect.yaml` and set up a work pool.
+
+## Requirements
+- Initialize a Prefect project in `/home/user/myproject` using `prefect init`.
+- Create a Prefect work pool named `local-work-pool` of type `process`.
+- Configure the deployment in `prefect.yaml`:
+  - Name the deployment `pipeline-deployment`.
+  - Set the entrypoint to `flows/data_pipeline.py:my_flow`.
+  - Assign it to the `local-work-pool`.
+- Deploy the flow using the configuration.
+- Start a worker for `local-work-pool` in the background, redirecting its output to `/home/user/myproject/worker.log`.
+
+## Implementation Guide
+1. Navigate to `/home/user/myproject`.
+2. Run `prefect init` to generate a `prefect.yaml` file if it doesn't exist.
+3. Use the Prefect CLI to create a work pool named `local-work-pool` of type `process`: `prefect work-pool create local-work-pool --type process`.
+4. Edit `prefect.yaml` to define a deployment named `pipeline-deployment` with the entrypoint `flows/data_pipeline.py:my_flow` and work pool `local-work-pool`.
+5. Run `prefect deploy --all --no-prompt` to register the deployment.
+6. Start the worker in the background: `prefect worker start -p local-work-pool > /home/user/myproject/worker.log 2>&1 &`.
+
+## Constraints
+- Project path: `/home/user/myproject`
+- Log file: `/home/user/myproject/worker.log`
+- Use Prefect CLI to create work pool, deploy, and start worker.
+EOF
+Running command: rm -f ~/.pochi/config.jsonc
+Command outputs captured
+The verifier.env contains an API key (often the case for LLM-based verifiers). You will incur costs associated with the API calls.
+Exception AgentTimeoutError is in exclude_exceptions, not retrying
+Not retrying trial because the exception is not in include_exceptions or the maximum number of retries has been reached
+Command outputs captured
+Running command: rm -f ~/.pochi/config.jsonc
+Command outputs captured
+The verifier.env contains an API key (often the case for LLM-based verifiers). You will incur costs associated with the API calls.
+Command outputs captured
+Running command: rm -f ~/.pochi/config.jsonc
+Command outputs captured
+The verifier.env contains an API key (often the case for LLM-based verifiers). You will incur costs associated with the API calls.

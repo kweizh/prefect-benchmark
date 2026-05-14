@@ -1,0 +1,56 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 4,
+            "passed": 4,
+            "failed": 0,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1778761626.899867,
+            "stop": 1778761644.7535255
+        },
+        "tests": [
+            {
+                "name": "test_final_state.py::test_script_execution",
+                "status": "passed",
+                "duration": 17.84146544151008,
+                "start": 1778761626.909166,
+                "stop": 1778761644.750903,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_log_file_exists",
+                "status": "passed",
+                "duration": 0.0004761284217238426,
+                "start": 1778761644.751175,
+                "stop": 1778761644.7517939,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_log_file_content",
+                "status": "passed",
+                "duration": 0.0004245261661708355,
+                "start": 1778761644.751978,
+                "stop": 1778761644.7526119,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_flow_decorators_in_source",
+                "status": "passed",
+                "duration": 0.00045333849266171455,
+                "start": 1778761644.7527847,
+                "stop": 1778761644.7533731,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            }
+        ]
+    }
+}

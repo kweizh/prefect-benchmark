@@ -1,0 +1,41 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 2,
+            "passed": 1,
+            "failed": 1,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1778761872.9053109,
+            "stop": 1778761873.0000873
+        },
+        "tests": [
+            {
+                "name": "test_final_state.py::test_run_concurrent_script_exists",
+                "status": "passed",
+                "duration": 0.0006223334930837154,
+                "start": 1778761872.9149952,
+                "stop": 1778761872.9158463,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_concurrent_execution_succeeds_and_updates_counter",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 0.0691182678565383,
+                "start": 1778761872.9160664,
+                "stop": 1778761872.9999032,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "def test_concurrent_execution_succeeds_and_updates_counter():\n        # Run the concurrent script\n        result = subprocess.run(\n            [\"python3\", RUN_SCRIPT],\n            capture_output=True,\n            text=True,\n            cwd=PROJECT_DIR\n        )\n>       assert result.returncode == 0, f\"run_concurrent.py failed with error:\\n{result.stderr}\\nOutput:\\n{result.stdout}\"\nE       AssertionError: run_concurrent.py failed with error:\nE         Traceback (most recent call last):\nE           File \"/home/user/prefect-project/run_concurrent.py\", line 3, in <module>\nE             from flow import concurrent_file_modifier\nE           File \"/home/user/prefect-project/flow.py\", line 1, in <module>\nE             from prefect import flow, task\nE         ModuleNotFoundError: No module named 'prefect'\nE         \nE         Output:\nE         \nE       assert 1 == 0\nE        +  where 1 = CompletedProcess(args=['python3', '/home/user/prefect-project/run_concurrent.py'], returncode=1, stdout='', stderr='Tr...flow.py\", line 1, in <module>\\n    from prefect import flow, task\\nModuleNotFoundError: No module named \\'prefect\\'\\n').returncode\n\ntests/test_final_state.py:20: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            }
+        ]
+    }
+}

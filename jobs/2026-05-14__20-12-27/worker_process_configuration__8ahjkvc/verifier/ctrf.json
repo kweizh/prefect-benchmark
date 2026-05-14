@@ -1,0 +1,56 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 4,
+            "passed": 4,
+            "failed": 0,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1778762161.9109476,
+            "stop": 1778762179.7974389
+        },
+        "tests": [
+            {
+                "name": "test_final_state.py::test_prefect_yaml_exists",
+                "status": "passed",
+                "duration": 0.0005148430354893208,
+                "start": 1778762161.9219058,
+                "stop": 1778762161.9226315,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_work_pool_exists_via_cli",
+                "status": "passed",
+                "duration": 9.687374907545745,
+                "start": 1778762161.9228222,
+                "stop": 1778762171.6104667,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_deployment_exists_via_cli",
+                "status": "passed",
+                "duration": 8.18549495190382,
+                "start": 1778762171.6106887,
+                "stop": 1778762179.7964077,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_worker_log_exists",
+                "status": "passed",
+                "duration": 0.0004863631911575794,
+                "start": 1778762179.7966263,
+                "stop": 1778762179.7972345,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            }
+        ]
+    }
+}

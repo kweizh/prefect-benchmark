@@ -1,0 +1,29 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 1,
+            "passed": 1,
+            "failed": 0,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1778761337.189824,
+            "stop": 1778761346.587536
+        },
+        "tests": [
+            {
+                "name": "test_final_state.py::test_flow_run_cancelled_via_cli",
+                "status": "passed",
+                "duration": 9.387793936766684,
+                "start": 1778761337.1992958,
+                "stop": 1778761346.5873525,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            }
+        ]
+    }
+}
