@@ -1,0 +1,64 @@
+downloading uv 0.9.7 x86_64-unknown-linux-gnu
+no checksums to verify
+installing to /root/.local/bin
+  uv
+  uvx
+everything's installed!
+
+To add $HOME/.local/bin to your PATH, either restart your shell or run:
+
+    source $HOME/.local/bin/env (sh, bash, zsh)
+    source $HOME/.local/bin/env.fish (fish)
+Downloading pygments (1.2MiB)
+ Downloading pygments
+Installed 7 packages in 30ms
+============================= test session starts ==============================
+platform linux -- Python 3.12.3, pytest-8.4.1, pluggy-1.6.0
+rootdir: /tests
+plugins: json-ctrf-0.3.5
+collected 2 items
+
+tests/test_final_state.py .F                                             [100%]
+
+=================================== FAILURES ===================================
+______________________ test_event_trigger_and_automation _______________________
+
+setup_environment = {'HOME': '/root', 'HOSTNAME': '71d7870fdcf7', 'LC_CTYPE': 'C.UTF-8', 'PATH': '/root/.cache/uv/archive-v0/eOSuffXLkml_C2SgMu7sk/bin:/root/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin', ...}
+
+    def test_event_trigger_and_automation(setup_environment):
+        """Priority 1: Use Prefect CLI to emit an event and verify the flow run was triggered."""
+        env = setup_environment
+    
+        # Emit the event
+        emit_result = subprocess.run(
+            ["prefect", "events", "emit", "--event", "custom.webhook.received", "--resource", "prefect.resource.id=my.webhook.resource"],
+            env=env,
+            capture_output=True, text=True
+        )
+        assert emit_result.returncode == 0, f"'prefect events emit' failed: {emit_result.stderr}"
+    
+        # Wait for the automation to trigger the flow run
+        time.sleep(10)
+    
+        # List flow runs
+        ls_result = subprocess.run(
+            ["prefect", "flow-run", "ls", "--output", "json"],
+            env=env,
+            capture_output=True, text=True
+        )
+        assert ls_result.returncode == 0, f"'prefect flow-run ls' failed: {ls_result.stderr}"
+    
+        runs = json.loads(ls_result.stdout)
+    
+        automation_runs = [run for run in runs if run.get("created_by") and run["created_by"].get("type") == "AUTOMATION"]
+>       assert len(automation_runs) > 0, "No flow runs were triggered by an AUTOMATION."
+E       AssertionError: No flow runs were triggered by an AUTOMATION.
+E       assert 0 > 0
+E        +  where 0 = len([])
+
+tests/test_final_state.py:79: AssertionError
+==================================== PASSES ====================================
+=========================== short test summary info ============================
+PASSED tests/test_final_state.py::test_flow_file_exists
+FAILED tests/test_final_state.py::test_event_trigger_and_automation - Asserti...
+========================= 1 failed, 1 passed in 33.10s =========================

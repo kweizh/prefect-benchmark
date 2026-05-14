@@ -1,0 +1,41 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 2,
+            "passed": 1,
+            "failed": 1,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1778760080.7651908,
+            "stop": 1778760113.8670754
+        },
+        "tests": [
+            {
+                "name": "test_final_state.py::test_flow_file_exists",
+                "status": "passed",
+                "duration": 0.0005720383487641811,
+                "start": 1778760080.7776904,
+                "stop": 1778760080.778483,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_event_trigger_and_automation",
+                "status": "failed",
+                "raw_status": "call_failed",
+                "duration": 33.07101073907688,
+                "start": 1778760080.7787037,
+                "stop": 1778760113.8668387,
+                "retries": 0,
+                "file_path": "test_final_state.py",
+                "trace": "setup_environment = {'HOME': '/root', 'HOSTNAME': '71d7870fdcf7', 'LC_CTYPE': 'C.UTF-8', 'PATH': '/root/.cache/uv/archive-v0/eOSuffXLkml_C2SgMu7sk/bin:/root/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin', ...}\n\n    def test_event_trigger_and_automation(setup_environment):\n        \"\"\"Priority 1: Use Prefect CLI to emit an event and verify the flow run was triggered.\"\"\"\n        env = setup_environment\n    \n        # Emit the event\n        emit_result = subprocess.run(\n            [\"prefect\", \"events\", \"emit\", \"--event\", \"custom.webhook.received\", \"--resource\", \"prefect.resource.id=my.webhook.resource\"],\n            env=env,\n            capture_output=True, text=True\n        )\n        assert emit_result.returncode == 0, f\"'prefect events emit' failed: {emit_result.stderr}\"\n    \n        # Wait for the automation to trigger the flow run\n        time.sleep(10)\n    \n        # List flow runs\n        ls_result = subprocess.run(\n            [\"prefect\", \"flow-run\", \"ls\", \"--output\", \"json\"],\n            env=env,\n            capture_output=True, text=True\n        )\n        assert ls_result.returncode == 0, f\"'prefect flow-run ls' failed: {ls_result.stderr}\"\n    \n        runs = json.loads(ls_result.stdout)\n    \n        automation_runs = [run for run in runs if run.get(\"created_by\") and run[\"created_by\"].get(\"type\") == \"AUTOMATION\"]\n>       assert len(automation_runs) > 0, \"No flow runs were triggered by an AUTOMATION.\"\nE       AssertionError: No flow runs were triggered by an AUTOMATION.\nE       assert 0 > 0\nE        +  where 0 = len([])\n\ntests/test_final_state.py:79: AssertionError",
+                "message": "The test failed in the call phase due to an assertion error"
+            }
+        ]
+    }
+}

@@ -1,0 +1,83 @@
+downloading uv 0.9.7 x86_64-unknown-linux-gnu
+no checksums to verify
+installing to /root/.local/bin
+  uv
+  uvx
+everything's installed!
+
+To add $HOME/.local/bin to your PATH, either restart your shell or run:
+
+    source $HOME/.local/bin/env (sh, bash, zsh)
+    source $HOME/.local/bin/env.fish (fish)
+Downloading pygments (1.2MiB)
+ Downloading pygments
+Installed 7 packages in 173ms
+============================= test session starts ==============================
+platform linux -- Python 3.12.3, pytest-8.4.1, pluggy-1.6.0
+rootdir: /tests
+plugins: json-ctrf-0.3.5
+collected 2 items
+
+tests/test_final_state.py .F                                             [100%]
+
+=================================== FAILURES ===================================
+____________ test_concurrent_execution_succeeds_and_updates_counter ____________
+
+    def test_concurrent_execution_succeeds_and_updates_counter():
+        # Run the concurrent script
+        result = subprocess.run(
+            ["python3", RUN_SCRIPT],
+            capture_output=True,
+            text=True,
+            cwd=PROJECT_DIR
+        )
+>       assert result.returncode == 0, f"run_concurrent.py failed with error:\n{result.stderr}\nOutput:\n{result.stdout}"
+E       AssertionError: run_concurrent.py failed with error:
+E         
+E         Output:
+E         Launching 5 concurrent flow runs...
+E         
+E         [run 3] stderr: Traceback (most recent call last):
+E           File "<string>", line 1, in <module>
+E           File "/home/user/prefect-project/flow.py", line 3, in <module>
+E             from prefect import flow, task
+E         ModuleNotFoundError: No module named 'prefect'
+E         [run 3] FAILED with return code 1
+E         [run 1] stderr: Traceback (most recent call last):
+E           File "<string>", line 1, in <module>
+E           File "/home/user/prefect-project/flow.py", line 3, in <module>
+E             from prefect import flow, task
+E         ModuleNotFoundError: No module named 'prefect'
+E         [run 1] FAILED with return code 1
+E         [run 4] stderr: Traceback (most recent call last):
+E           File "<string>", line 1, in <module>
+E           File "/home/user/prefect-project/flow.py", line 3, in <module>
+E             from prefect import flow, task
+E         ModuleNotFoundError: No module named 'prefect'
+E         [run 4] FAILED with return code 1
+E         [run 2] stderr: Traceback (most recent call last):
+E           File "<string>", line 1, in <module>
+E           File "/home/user/prefect-project/flow.py", line 3, in <module>
+E             from prefect import flow, task
+E         ModuleNotFoundError: No module named 'prefect'
+E         [run 2] FAILED with return code 1
+E         [run 5] stderr: Traceback (most recent call last):
+E           File "<string>", line 1, in <module>
+E           File "/home/user/prefect-project/flow.py", line 3, in <module>
+E             from prefect import flow, task
+E         ModuleNotFoundError: No module named 'prefect'
+E         [run 5] FAILED with return code 1
+E         
+E         All 5 runs finished. Failures: 5
+E         Final counter value: 5
+E         FAILURE: counter value does not match expected result.
+E         
+E       assert 1 == 0
+E        +  where 1 = CompletedProcess(args=['python3', '/home/user/prefect-project/run_concurrent.py'], returncode=1, stdout='Launching 5 c...ns finished. Failures: 5\nFinal counter value: 5\nFAILURE: counter value does not match expected result.\n', stderr='').returncode
+
+tests/test_final_state.py:20: AssertionError
+==================================== PASSES ====================================
+=========================== short test summary info ============================
+PASSED tests/test_final_state.py::test_run_concurrent_script_exists
+FAILED tests/test_final_state.py::test_concurrent_execution_succeeds_and_updates_counter
+========================= 1 failed, 1 passed in 0.15s ==========================

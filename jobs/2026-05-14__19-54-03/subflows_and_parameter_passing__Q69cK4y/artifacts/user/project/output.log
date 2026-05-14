@@ -1,0 +1,12 @@
+2026-05-14 12:04:07,092 - INFO - process_item: 'apple' -> 'APPLE' (uppercase=True)
+2026-05-14 12:04:08,221 - INFO - process_item: 'Banana' -> 'BANANA' (uppercase=True)
+2026-05-14 12:04:09,353 - INFO - process_item: 'cherry' -> 'CHERRY' (uppercase=True)
+2026-05-14 12:04:10,354 - INFO - main_flow result: ['APPLE', 'BANANA', 'CHERRY']
+2026-05-14 12:04:10,978 - INFO - Final output written to /home/user/project/output.log
+Result: ['APPLE', 'BANANA', 'CHERRY']
+2026-05-14 12:05:29,744 - INFO - process_item: 'apple' -> 'APPLE' (uppercase=True)
+2026-05-14 12:05:30,842 - INFO - process_item: 'Banana' -> 'BANANA' (uppercase=True)
+2026-05-14 12:05:31,946 - INFO - process_item: 'cherry' -> 'CHERRY' (uppercase=True)
+2026-05-14 12:05:32,947 - INFO - main_flow result: ['APPLE', 'BANANA', 'CHERRY']
+2026-05-14 12:05:33,626 - INFO - Final output written to /home/user/project/output.log
+Result: ['APPLE', 'BANANA', 'CHERRY']

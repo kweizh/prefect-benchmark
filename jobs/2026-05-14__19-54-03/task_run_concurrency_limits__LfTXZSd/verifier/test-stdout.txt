@@ -1,0 +1,174 @@
+downloading uv 0.9.7 x86_64-unknown-linux-gnu
+no checksums to verify
+installing to /root/.local/bin
+  uv
+  uvx
+everything's installed!
+
+To add $HOME/.local/bin to your PATH, either restart your shell or run:
+
+    source $HOME/.local/bin/env (sh, bash, zsh)
+    source $HOME/.local/bin/env.fish (fish)
+Downloading pygments (1.2MiB)
+ Downloading pygments
+Installed 7 packages in 46ms
+============================= test session starts ==============================
+platform linux -- Python 3.12.3, pytest-8.4.1, pluggy-1.6.0
+rootdir: /tests
+plugins: json-ctrf-0.3.5
+collected 2 items
+
+tests/test_final_state.py F.                                             [100%]
+
+=================================== FAILURES ===================================
+______________________ test_concurrency_limit_set_via_cli ______________________
+
+    def test_concurrency_limit_set_via_cli():
+        """Priority 1: Use Prefect CLI to verify the concurrency limit."""
+        # Ensure server is reachable. It should have been started by Docker CMD.
+        # The output of `prefect concurrency-limit inspect heavy-processing`
+        result = subprocess.run(
+            ["prefect", "concurrency-limit", "inspect", "heavy-processing"],
+            capture_output=True, text=True, cwd="/home/user/project"
+        )
+>       assert result.returncode == 0, \
+            f"'prefect concurrency-limit inspect' failed: {result.stderr}"
+E       AssertionError: 'prefect concurrency-limit inspect' failed: Traceback (most recent call last):
+E           File "/usr/local/lib/python3.12/dist-packages/pydantic/_internal/_generate_schema.py", line 799, in _model_schema
+E             fields, extra_info = rebuild_model_fields(
+E                                  ^^^^^^^^^^^^^^^^^^^^^
+E           File "/usr/local/lib/python3.12/dist-packages/pydantic/_internal/_fields.py", line 464, in rebuild_model_fields
+E             new_field = _recreate_field_info(
+E                         ^^^^^^^^^^^^^^^^^^^^^
+E           File "/usr/local/lib/python3.12/dist-packages/pydantic/_internal/_fields.py", line 502, in _recreate_field_info
+E             ann = _typing_extra.eval_type(
+E                   ^^^^^^^^^^^^^^^^^^^^^^^^
+E           File "/usr/local/lib/python3.12/dist-packages/pydantic/_internal/_typing_extra.py", line 442, in eval_type
+E             return eval_type_backport(value, globalns, localns)
+E                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           File "/usr/local/lib/python3.12/dist-packages/pydantic/_internal/_typing_extra.py", line 474, in eval_type_backport
+E             return _eval_type_backport(value, globalns, localns, type_params)
+E                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           File "/usr/local/lib/python3.12/dist-packages/pydantic/_internal/_typing_extra.py", line 511, in _eval_type_backport
+E             return _eval_type(value, globalns, localns, type_params)
+E                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           File "/usr/local/lib/python3.12/dist-packages/pydantic/_internal/_typing_extra.py", line 564, in _eval_type
+E             return typing._eval_type(  # type: ignore
+E                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           File "/usr/lib/python3.12/typing.py", line 428, in _eval_type
+E             ev_args = tuple(_eval_type(a, globalns, localns, recursive_guard) for a in t.__args__)
+E                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           File "/usr/lib/python3.12/typing.py", line 428, in <genexpr>
+E             ev_args = tuple(_eval_type(a, globalns, localns, recursive_guard) for a in t.__args__)
+E                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           File "/usr/lib/python3.12/typing.py", line 414, in _eval_type
+E             return t._evaluate(globalns, localns, recursive_guard)
+E                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           File "/usr/lib/python3.12/typing.py", line 924, in _evaluate
+E             eval(self.__forward_code__, globalns, localns),
+E             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           File "<string>", line 1, in <module>
+E         NameError: name 'BaseResult' is not defined
+E         
+E         The above exception was the direct cause of the following exception:
+E         
+E         Traceback (most recent call last):
+E           File "/usr/local/bin/prefect", line 5, in <module>
+E             from prefect.cli import app
+E           File "/usr/local/lib/python3.12/dist-packages/prefect/cli/__init__.py", line 13, in <module>
+E             import prefect.cli.shell
+E           File "/usr/local/lib/python3.12/dist-packages/prefect/cli/shell.py", line 16, in <module>
+E             from prefect import flow
+E           File "<frozen importlib._bootstrap>", line 1412, in _handle_fromlist
+E           File "/usr/local/lib/python3.12/dist-packages/prefect/__init__.py", line 117, in __getattr__
+E             module = import_module(module_name, package=package)
+E                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           File "/usr/lib/python3.12/importlib/__init__.py", line 90, in import_module
+E             return _bootstrap._gcd_import(name[level:], package, level)
+E                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           File "/usr/local/lib/python3.12/dist-packages/prefect/main.py", line 31, in <module>
+E             prefect.context.TaskRunContext.model_rebuild(_types_namespace={"Task": Task})
+E           File "/usr/local/lib/python3.12/dist-packages/pydantic/main.py", line 683, in model_rebuild
+E             return _model_construction.complete_model_class(
+E                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           File "/usr/local/lib/python3.12/dist-packages/pydantic/_internal/_model_construction.py", line 667, in complete_model_class
+E             schema = gen_schema.generate_schema(cls)
+E                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           File "/usr/local/lib/python3.12/dist-packages/pydantic/_internal/_generate_schema.py", line 744, in generate_schema
+E             schema = self._generate_schema_inner(obj)
+E                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           File "/usr/local/lib/python3.12/dist-packages/pydantic/_internal/_generate_schema.py", line 1038, in _generate_schema_inner
+E             return self._model_schema(obj)
+E                    ^^^^^^^^^^^^^^^^^^^^^^^
+E           File "/usr/local/lib/python3.12/dist-packages/pydantic/_internal/_generate_schema.py", line 868, in _model_schema
+E             {k: self._generate_md_field_schema(k, v, decorators) for k, v in fields.items()},
+E                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           File "/usr/local/lib/python3.12/dist-packages/pydantic/_internal/_generate_schema.py", line 1245, in _generate_md_field_schema
+E             schema, metadata = self._common_field_schema(name, field_info, decorators)
+E                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           File "/usr/local/lib/python3.12/dist-packages/pydantic/_internal/_generate_schema.py", line 1299, in _common_field_schema
+E             schema = self._apply_annotations(
+E                      ^^^^^^^^^^^^^^^^^^^^^^^^
+E           File "/usr/local/lib/python3.12/dist-packages/pydantic/_internal/_generate_schema.py", line 2252, in _apply_annotations
+E             schema = get_inner_schema(source_type)
+E                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           File "/usr/local/lib/python3.12/dist-packages/pydantic/_internal/_schema_generation_shared.py", line 83, in __call__
+E             schema = self._handler(source_type)
+E                      ^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           File "/usr/local/lib/python3.12/dist-packages/pydantic/_internal/_generate_schema.py", line 2231, in inner_handler
+E             schema = self._generate_schema_inner(obj)
+E                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           File "/usr/local/lib/python3.12/dist-packages/pydantic/_internal/_generate_schema.py", line 1038, in _generate_schema_inner
+E             return self._model_schema(obj)
+E                    ^^^^^^^^^^^^^^^^^^^^^^^
+E           File "/usr/local/lib/python3.12/dist-packages/pydantic/_internal/_generate_schema.py", line 868, in _model_schema
+E             {k: self._generate_md_field_schema(k, v, decorators) for k, v in fields.items()},
+E                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           File "/usr/local/lib/python3.12/dist-packages/pydantic/_internal/_generate_schema.py", line 1245, in _generate_md_field_schema
+E             schema, metadata = self._common_field_schema(name, field_info, decorators)
+E                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           File "/usr/local/lib/python3.12/dist-packages/pydantic/_internal/_generate_schema.py", line 1299, in _common_field_schema
+E             schema = self._apply_annotations(
+E                      ^^^^^^^^^^^^^^^^^^^^^^^^
+E           File "/usr/local/lib/python3.12/dist-packages/pydantic/_internal/_generate_schema.py", line 2252, in _apply_annotations
+E             schema = get_inner_schema(source_type)
+E                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           File "/usr/local/lib/python3.12/dist-packages/pydantic/_internal/_schema_generation_shared.py", line 83, in __call__
+E             schema = self._handler(source_type)
+E                      ^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           File "/usr/local/lib/python3.12/dist-packages/pydantic/_internal/_generate_schema.py", line 2231, in inner_handler
+E             schema = self._generate_schema_inner(obj)
+E                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           File "/usr/local/lib/python3.12/dist-packages/pydantic/_internal/_generate_schema.py", line 1043, in _generate_schema_inner
+E             return self.match_type(obj)
+E                    ^^^^^^^^^^^^^^^^^^^^
+E           File "/usr/local/lib/python3.12/dist-packages/pydantic/_internal/_generate_schema.py", line 1161, in match_type
+E             return self._match_generic_type(obj, origin)
+E                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           File "/usr/local/lib/python3.12/dist-packages/pydantic/_internal/_generate_schema.py", line 1184, in _match_generic_type
+E             return self._union_schema(obj)
+E                    ^^^^^^^^^^^^^^^^^^^^^^^
+E           File "/usr/local/lib/python3.12/dist-packages/pydantic/_internal/_generate_schema.py", line 1344, in _union_schema
+E             choices.append(self.generate_schema(arg))
+E                            ^^^^^^^^^^^^^^^^^^^^^^^^^
+E           File "/usr/local/lib/python3.12/dist-packages/pydantic/_internal/_generate_schema.py", line 744, in generate_schema
+E             schema = self._generate_schema_inner(obj)
+E                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           File "/usr/local/lib/python3.12/dist-packages/pydantic/_internal/_generate_schema.py", line 1038, in _generate_schema_inner
+E             return self._model_schema(obj)
+E                    ^^^^^^^^^^^^^^^^^^^^^^^
+E           File "/usr/local/lib/python3.12/dist-packages/pydantic/_internal/_generate_schema.py", line 806, in _model_schema
+E             raise PydanticUndefinedAnnotation.from_name_error(e) from e
+E         pydantic.errors.PydanticUndefinedAnnotation: name 'BaseResult' is not defined
+E         
+E         For further information visit https://errors.pydantic.dev/2.13/u/undefined-annotation
+E         
+E       assert 1 == 0
+E        +  where 1 = CompletedProcess(args=['prefect', 'concurrency-limit', 'inspect', 'heavy-processing'], returncode=1, stdout='', stderr...aseResult\' is not defined\n\nFor further information visit https://errors.pydantic.dev/2.13/u/undefined-annotation\n').returncode
+
+tests/test_final_state.py:16: AssertionError
+==================================== PASSES ====================================
+=========================== short test summary info ============================
+PASSED tests/test_final_state.py::test_flow_py_updated_with_tag
+FAILED tests/test_final_state.py::test_concurrency_limit_set_via_cli - Assert...
+========================= 1 failed, 1 passed in 1.27s ==========================
