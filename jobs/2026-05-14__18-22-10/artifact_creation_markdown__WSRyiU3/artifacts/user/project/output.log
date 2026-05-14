@@ -1,0 +1,6 @@
+10:23:58.856 | INFO    | prefect - Starting temporary server on http://127.0.0.1:8386
+See https://docs.prefect.io/v3/concepts/server#how-to-guides for more information on running a dedicated Prefect server.
+10:24:03.724 | INFO    | Flow run 'imperial-sawfish' - Beginning flow run 'imperial-sawfish' for flow 'main-flow'
+10:24:03.782 | INFO    | Task run 'generate_report-fdd' - Finished in state Completed()
+10:24:04.760 | INFO    | Flow run 'imperial-sawfish' - Finished in state Completed()
+10:24:04.774 | INFO    | prefect - Stopping temporary server on http://127.0.0.1:8386

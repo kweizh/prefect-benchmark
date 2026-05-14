@@ -1,0 +1,33 @@
+Discovered type 'process' for work pool 'local-work-pool'.
+Worker 'ProcessWorker 09c91cd5-146c-410e-b623-a03176c645e7' started!
+10:38:49.380 | WARNING | prefect.FlowRunCancellingObserver - The FlowRunCancellingObserver websocket failed with an exception. Switching to polling mode.
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/dist-packages/prefect/_observers.py", line 95, in _consume_events
+    async for event in self._events_subscriber:
+  File "/usr/local/lib/python3.12/dist-packages/prefect/events/clients.py", line 817, in __anext__
+    await self._reconnect()
+  File "/usr/local/lib/python3.12/dist-packages/prefect/events/clients.py", line 742, in _reconnect
+    self._websocket = await self._connect.__aenter__()
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/websockets/asyncio/client.py", line 590, in __aenter__
+    return await self
+           ^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/websockets/asyncio/client.py", line 544, in __await_impl__
+    self.connection = await self.create_connection()
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/websockets/asyncio/client.py", line 470, in create_connection
+    _, connection = await loop.create_connection(factory, **kwargs)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/asyncio/base_events.py", line 1122, in create_connection
+    raise exceptions[0]
+  File "/usr/lib/python3.12/asyncio/base_events.py", line 1104, in create_connection
+    sock = await self._connect_sock(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/asyncio/base_events.py", line 1007, in _connect_sock
+    await self.sock_connect(sock, address)
+  File "/usr/lib/python3.12/asyncio/selector_events.py", line 651, in sock_connect
+    return await fut
+           ^^^^^^^^^
+  File "/usr/lib/python3.12/asyncio/selector_events.py", line 691, in _sock_connect_cb
+    raise OSError(err, f'Connect call failed {address}')
+ConnectionRefusedError: [Errno 111] Connect call failed ('127.0.0.1', 4200)

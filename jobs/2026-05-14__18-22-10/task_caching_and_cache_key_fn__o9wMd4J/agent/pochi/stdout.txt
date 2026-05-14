@@ -1,0 +1,23 @@
+- Initializing MCP connections...
+You
+# Prefect Task Caching ## Background Prefect provides caching to prevent re-execution of expensive tasks. You can use `cache_key_fn` to define custom caching logic. ## Requirements * Create a Python script `/home/user/project/flow.py`. * Define a Prefect task named `fetch_data(url: str)` that takes a string URL as input and returns the string `"Data from " + url`. * The `fetch_data` task must use `cache_key_fn` to cache its output based on the `url` argument. The cache key function should accept `context` and `parameters` and return the string `"fetch-" + parameters["url"]`. * Define a Prefect flow named `process_data()` that calls `fetch_data("http://example.com")` twice. * The flow should print the result of both calls. * The script must execute the `process_data()` flow when run directly. ## Implementation Guide 1. Ensure you are working in `/home/user/project`. 2. Write the script `flow.py` with the required task and flow. 3. Run the script using `python3 flow.py` to verify it works. ## Constraints * Project path: /home/user/project * The script must use Prefect 3.0 syntax (e.g., `@task`, `@flow`).   
+
+Pochi
+💭 Thinking for 905 characters   
+💫 Executing mkdir -p /home/user/project ✔ 
+💭 Thinking for 175 characters   
+✏️  Writing /home/user/project/flow.py ✔ 
+💭 Thinking for 213 characters   
+💫 Executing python3 /home/user/project/flow.py ✔ 
+💭 Thinking for 494 characters   
+💭 Thinking for 600 characters   
+🎉 Task Completed
+I have created the Python script `/home/user/project/flow.py` demonstrating Prefect task caching using a custom `cache_key_fn`.
+
+The script defines:
+1. `fetch_data`: A Prefect task that takes a `url` and returns `"Data from " + url`.
+2. `cache_key_fn`: A custom cache key function that receives the `context` and `parameters` and returns `"fetch-" + parameters["url"]`, which is used to cache the task result.
+3. `process_data`: A Prefect flow that executes `fetch_data` twice with the same URL and prints both results.
+
+When executed, the Prefect logs show that the first task run completes normally (`Finished in state Completed()`), and the second task run hits the cache (`Finished in state Cached(type=COMPLETED)`), successfully demonstrating the custom cache key functionality in Prefect 3.0.   
+  

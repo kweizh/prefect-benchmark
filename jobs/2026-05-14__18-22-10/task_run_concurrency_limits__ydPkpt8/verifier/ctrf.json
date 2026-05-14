@@ -1,0 +1,38 @@
+{
+    "results": {
+        "tool": {
+            "name": "pytest",
+            "version": "8.4.1"
+        },
+        "summary": {
+            "tests": 2,
+            "passed": 2,
+            "failed": 0,
+            "skipped": 0,
+            "pending": 0,
+            "other": 0,
+            "start": 1778754926.3029425,
+            "stop": 1778754936.3422115
+        },
+        "tests": [
+            {
+                "name": "test_final_state.py::test_concurrency_limit_set_via_cli",
+                "status": "passed",
+                "duration": 10.02825606521219,
+                "start": 1778754926.312506,
+                "stop": 1778754936.3410828,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            },
+            {
+                "name": "test_final_state.py::test_flow_py_updated_with_tag",
+                "status": "passed",
+                "duration": 0.0004752893000841141,
+                "start": 1778754936.3414025,
+                "stop": 1778754936.342011,
+                "retries": 0,
+                "file_path": "test_final_state.py"
+            }
+        ]
+    }
+}

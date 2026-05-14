@@ -1,0 +1,48 @@
+{
+    "id": "827e7222-4f10-4a90-a858-cbbaef1cebc7",
+    "started_at": "2026-05-14T18:22:13.877432",
+    "finished_at": "2026-05-14T18:39:18.318944",
+    "n_total_trials": 15,
+    "stats": {
+        "n_trials": 15,
+        "n_errors": 2,
+        "evals": {
+            "pochi__gemini-3.1-pro__tasks": {
+                "n_trials": 13,
+                "n_errors": 2,
+                "metrics": [
+                    {
+                        "mean": 0.5333333333333333
+                    }
+                ],
+                "reward_stats": {
+                    "reward": {
+                        "1.0": [
+                            "artifact_creation_markdown__WSRyiU3",
+                            "automations_flow_run_state__X7zyPGu",
+                            "cancelling_flow_runs__2qJjHxN",
+                            "event_webhook_trigger_automation__qJDzevh",
+                            "state_change_hooks_notifications__y8w6WWt",
+                            "subflows_and_parameter_passing__FmphpFL",
+                            "task_caching_and_cache_key_fn__o9wMd4J",
+                            "task_run_concurrency_limits__ydPkpt8"
+                        ],
+                        "0.0": [
+                            "custom_block_type_creation__sM8fUqz",
+                            "flow_serve_cron_schedule__pXLw3gN",
+                            "serializable_transaction_file_lo__hoamhTo",
+                            "suspending_and_resuming_flows__N9jSJJf",
+                            "worker_process_configuration__5utES2n"
+                        ]
+                    }
+                },
+                "exception_stats": {
+                    "RuntimeError": [
+                        "custom_result_serializers__LgeqzDM",
+                        "deployment_docker_infrastructure__ZTLG54T"
+                    ]
+                }
+            }
+        }
+    }
+}

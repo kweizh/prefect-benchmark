@@ -1,0 +1,63 @@
+downloading uv 0.9.7 x86_64-unknown-linux-gnu
+no checksums to verify
+installing to /root/.local/bin
+  uv
+  uvx
+everything's installed!
+
+To add $HOME/.local/bin to your PATH, either restart your shell or run:
+
+    source $HOME/.local/bin/env (sh, bash, zsh)
+    source $HOME/.local/bin/env.fish (fish)
+Downloading pydantic-core (2.0MiB)
+Downloading pygments (1.2MiB)
+Downloading sqlalchemy (3.2MiB)
+Downloading cryptography (4.5MiB)
+Downloading asyncpg (3.4MiB)
+Downloading apprise (1.6MiB)
+Downloading burner-redis (1.3MiB)
+Downloading prefect (14.0MiB)
+Downloading beartype (1.3MiB)
+ Downloading burner-redis
+ Downloading pygments
+ Downloading beartype
+ Downloading apprise
+ Downloading pydantic-core
+ Downloading sqlalchemy
+ Downloading asyncpg
+ Downloading cryptography
+ Downloading prefect
+Installed 112 packages in 316ms
+============================= test session starts ==============================
+platform linux -- Python 3.12.3, pytest-8.4.1, pluggy-1.6.0
+rootdir: /tests
+plugins: anyio-4.13.0, json-ctrf-0.3.5
+collected 3 items
+
+tests/test_final_state.py .F.                                            [100%]
+
+=================================== FAILURES ===================================
+_____________________ test_deployment_exists_and_schedule ______________________
+
+    def test_deployment_exists_and_schedule():
+        """Priority 1: Use Prefect CLI to verify the deployment state and cron schedule."""
+        result = subprocess.run(
+            ["prefect", "deployment", "inspect", "my_flow/my-deployment"],
+            capture_output=True, text=True, cwd=PROJECT_DIR
+        )
+>       assert result.returncode == 0, \
+            f"'prefect deployment inspect' failed: {result.stderr}"
+E       AssertionError: 'prefect deployment inspect' failed: 10:30:56.890 | INFO    | prefect - Starting temporary server on http://127.0.0.1:8053
+E         See https://docs.prefect.io/v3/concepts/server#how-to-guides for more information on running a dedicated Prefect server.
+E         10:31:01.943 | INFO    | prefect - Stopping temporary server on http://127.0.0.1:8053
+E         
+E       assert 1 == 0
+E        +  where 1 = CompletedProcess(args=['prefect', 'deployment', 'inspect', 'my_flow/my-deployment'], returncode=1, stdout="Deployment ... a dedicated Prefect server.\n10:31:01.943 | INFO    | prefect - Stopping temporary server on http://127.0.0.1:8053\n').returncode
+
+tests/test_final_state.py:24: AssertionError
+==================================== PASSES ====================================
+=========================== short test summary info ============================
+PASSED tests/test_final_state.py::test_secret_block_exists_and_value
+PASSED tests/test_final_state.py::test_serve_flow_script_exists
+FAILED tests/test_final_state.py::test_deployment_exists_and_schedule - Asser...
+========================= 1 failed, 2 passed in 22.49s =========================
